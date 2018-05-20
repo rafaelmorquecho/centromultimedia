@@ -1,6 +1,6 @@
 <?php
 require("../conexion/conexion.php");
-require_once("../modelos/modelo_usuario.php");
+require_once("../modelos/modelo_login.php");
 
 $datos=array();
 $usuario=new usuario();
