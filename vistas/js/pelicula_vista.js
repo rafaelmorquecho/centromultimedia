@@ -4,8 +4,11 @@ $(document).ready(function () {
     var titulo;
     var datos=[];
     
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+// ventana de logeo    
 
-    $(".sesion").click(function () {
+$(".sesion").click(function () {
         $("#loginDialog").dialog('open');
         
     });
@@ -16,20 +19,10 @@ $(document).ready(function () {
         height: 'auto',
         width: 800,
         modal: true,
-        buttons: [{
-                text: "ver",
-                click: function () {
-
-
-                }
-
-            }, {
-                text: "Añadir a favoritos"
-
-            },
+        buttons: [
             {
 
-                text: "Cancelar",
+                text: "Cerrar",
                 click: function () {
                     $(this).dialog("close");
                 }
@@ -41,8 +34,10 @@ $(document).ready(function () {
 
     
 
-    
-    
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////  
+
+// mostar titulo
    
     $(".cartel").mouseover(function () {
 
@@ -90,7 +85,10 @@ $(document).ready(function () {
         
 
     });
-
+    
+////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+// añadir a favoritos
     dialog = $('#peliculaDialog').dialog({
         title: "titulo",
         autoOpen: false,
@@ -123,7 +121,51 @@ $(document).ready(function () {
         ]
     });
 
+    $('#gestionUsuarios').click(function () {
+        
+        var dataSent = {
+            
+        };
 
+    
+        $.ajax({
+            url: "ajax/usuarios.php",
+            type: "POST",
+            data: dataSent,
+            success: function (data, textStatus, jqXHR) {
+                $('#usuarios').remove();
+                var usuario = $.parseJSON(data);
+                console.log(usuario);
+                if (usuario.length > 0) {
+                    $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Privilegios</th></tr></thead>\
+                <tbody id='cuerpo_usuarios'><tbody></table>");
+                    $('#usuarios').css('visibility', 'visible');
+                } else {
+                    $('#usuarios').css('visibility', 'hidden');
+                    $('#gestion').append("<p id='usuarios' style='color:red' ><?php echo _('No se han encontrado resultados con los datos introducidos. Inténtalo de nuevo.') ?></p>");
+                    //abAlert("<?php echo _('No se han encontrado resultados con los datos introducidos. Inténtalo de nuevo.') ?>")
+                }
+    
+                $.each(usuario, function (i, item) {
+                    $('#cuerpo_usuarios').append("<tr><td>" + item.nombre+ "</td><td>" +
+                        item.login + "</td><td>" + item.email +
+                        "</td><td>" + item.tipo +
+                        "</td><td><input type='button' class='btn btn-primary btn-sm anadir' data-id='" + item.id + "'  value='añadir'></td></tr>");
+                });
+                $('.anadir').on('click', usuarios);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                abError(errorThrown);
+                return false;
+            }
+        });
+
+        function usuarios(){
+
+        }
+    
+        
+    });
 
 
 

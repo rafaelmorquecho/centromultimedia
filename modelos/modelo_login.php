@@ -12,8 +12,15 @@ class usuario{
         $this->db=Conectar::conexion();
         $this->usuario=array();
     }
-    public function usuario(){
+    public function usuario2(){
         $consulta=$this->db->query("SELECT * FROM `usuario`;");
+        $consulta->execute();
+        $this->usuario = $consulta->fetchAll();        
+        return $this->usuario;
+    }
+
+    public function get_usuario(){
+        $consulta=$this->db->query("SELECT DISTINCT * FROM `usuario` INNER join `usuario_clase` on (id = id_usuario) INNER join clase USING (id_clase)") ;
         $consulta->execute();
         $this->usuario = $consulta->fetchAll();        
         return $this->usuario;

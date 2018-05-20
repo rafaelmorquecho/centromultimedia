@@ -72,7 +72,23 @@
             </div>	
         </div>
         <div id="loginDialog" style="display:none">
-        <?php echo "<pre><code>" . print_r($_SESSION,true) . "</code></pre>"; ?>
+        <div id="gestion"> </div>
+        <?php //echo "<pre><code>" . print_r($_SESSION,true) . "</code></pre>";
+        echo "<p>Login:" .  $_SESSION['usuario'] . "</p>";
+        echo "<p>Privilegios:";
+        foreach ($_SESSION['rol'] as $rol) {
+            echo " " .  $rol . " ";
+        }
+        echo "</p>";
+       
+
+        if (in_array('admin' , $_SESSION['rol'])){ 
+        echo "<button class='boton' style='margin-rigth:25px' id='gestionUsuarios'> Gestion de usuarios</button>";
+        echo "<button class='boton' id='gestionPeliculas'> Gestion de peliculas</button>";
+        }
+        ?>
+
+        
             </div>	
         </div>
 
