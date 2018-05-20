@@ -4,9 +4,9 @@ class Conectar{
 
     public static function conexion(){
 
-        $servername = "bbdd.local.red";
-        $username = "rafa";
-        $password = "1234";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
         $dbname = "centromultimedia";
 
         try{
