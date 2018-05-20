@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>LOGIN</title>
-<link rel="stylesheet" media="screen" href="vistas/css/login2.css" >
+<link rel="stylesheet" media="screen" href="vistas/css/login.css" >
 </head>
     <body>
         <div class="container ">
