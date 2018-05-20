@@ -12,6 +12,7 @@ $(".sesion").click(function () {
         $("#loginDialog").dialog('open');
         $('#usuarios').remove();
         $('#usuario').show();
+        
     });
 
     $('#loginDialog').dialog({
@@ -114,7 +115,6 @@ $(".sesion").click(function () {
 
                 text: "Cancelar",
                 click: function () {
-                    $('#usuario').show();
                     $(this).dialog("close");
                 }
 
@@ -124,8 +124,7 @@ $(".sesion").click(function () {
     });
 
     $('#gestionUsuarios').click(function () {
-        $('#usuarios').remove();
-        $('#usuario').show();
+        
         var dataSent = {
             
         };

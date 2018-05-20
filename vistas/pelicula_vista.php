@@ -24,8 +24,8 @@
                         <li><a href="#">Series</a></li>
                     </ul>
                 </nav>
-                <button class="sesion derecha"><?php echo "Bienvenido  " . $_SESSION['usuario']; ?></button>
-                <button class=" derecha" id="logout" type="submit"  onclick= "window.location.href = 'vistas/logout.php'">Logout</button>
+                <button class="btn btn-signin sesion derecha"><?php echo "Bienvenido  " . $_SESSION['usuario']; ?></button>
+                <button class="btn btn-signin derecha" id="logout" type="submit"  onclick= "window.location.href = 'vistas/logout.php'">Logout</button>
                 <input class="buscar select derecha" type="text">
                 <select class="select derecha" >
                     <option>En todo</option>
@@ -37,12 +37,12 @@
         </header>
         <section>
             <div id="peliculas">
-                
+                <?php if(!empty($faforitos)){?>
                 <div id="barra_favoritas">
                 </div>
                 <div id="favoritas">
-                </div
-                        
+                </div>
+                <?php } ?>       
                     
                 <?php if(!empty($favoritas)){
                      echo "<h2>Favoritas</h2>";
@@ -71,12 +71,8 @@
                 <button type="submid">quitar</button>
             </div>	
         </div>
-
-
         <div id="loginDialog" style="display:none">
-        
         <div id="gestion"> </div>
-
         <div id="usuario">
         <?php //echo "<pre><code>" . print_r($_SESSION,true) . "</code></pre>";
         echo "<p>Login:" .  $_SESSION['usuario'] . "</p>";
@@ -92,9 +88,8 @@
         echo "<button class='boton' id='gestionPeliculas'> Gestion de peliculas</button>";
         }
         ?>
-        </div>
 
-        
+        </div>
             </div>	
         </div>
 

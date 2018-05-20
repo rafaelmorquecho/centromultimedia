@@ -12,7 +12,7 @@ p {
 }
 
 header {
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.5);
   width: 100%;
   position: fixed;
   z-index: 100;
@@ -23,8 +23,11 @@ nav{
 }
  
 nav ul {
+  margin-top: 0px;
+    margin-bottom: 0px;
   list-style: none;
   overflow: hidden; /* Limpiamos errores de float */
+
 }
  
 nav ul li {
@@ -38,6 +41,7 @@ nav ul li {
 nav ul li a {
   display: block; /* Convertimos los elementos a en elementos bloque para manipular el padding */
   padding: 20px;
+  margin: 0;
   color: #fff;
   text-decoration: none;
 }
@@ -54,9 +58,11 @@ section {
 h1{
     text-align: center;
     color:#FFFF00;
-    padding-top: 20px;
-    background-color: #0f0f0f;
+    padding: 0px;
+    margin:0;
+    background: rgba(0,0,0,0.2);
     font-size: 50px;
+
     
 }
 
