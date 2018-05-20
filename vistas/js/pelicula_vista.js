@@ -10,7 +10,8 @@ $(document).ready(function () {
 
 $(".sesion").click(function () {
         $("#loginDialog").dialog('open');
-        
+        $('#usuarios').remove();
+        $('#usuario').show();
     });
 
     $('#loginDialog').dialog({
@@ -113,6 +114,7 @@ $(".sesion").click(function () {
 
                 text: "Cancelar",
                 click: function () {
+                    $('#usuario').show();
                     $(this).dialog("close");
                 }
 
@@ -122,7 +124,8 @@ $(".sesion").click(function () {
     });
 
     $('#gestionUsuarios').click(function () {
-        
+        $('#usuarios').remove();
+        $('#usuario').show();
         var dataSent = {
             
         };
@@ -136,23 +139,23 @@ $(".sesion").click(function () {
                 $('#usuarios').remove();
                 var usuario = $.parseJSON(data);
                 console.log(usuario);
-                if (usuario.length > 0) {
-                    $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th>Privilegios</th></tr></thead>\
+                
+                    $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th></th></tr></thead>\
                 <tbody id='cuerpo_usuarios'><tbody></table>");
-                    $('#usuarios').css('visibility', 'visible');
-                } else {
-                    $('#usuarios').css('visibility', 'hidden');
-                    $('#gestion').append("<p id='usuarios' style='color:red' ><?php echo _('No se han encontrado resultados con los datos introducidos. Inténtalo de nuevo.') ?></p>");
-                    //abAlert("<?php echo _('No se han encontrado resultados con los datos introducidos. Inténtalo de nuevo.') ?>")
-                }
+                    //$('#usuarios').css('visibility', 'visible');
+                    $('#usuario').hide();
+                
     
                 $.each(usuario, function (i, item) {
                     $('#cuerpo_usuarios').append("<tr><td>" + item.nombre+ "</td><td>" +
                         item.login + "</td><td>" + item.email +
-                        "</td><td>" + item.tipo +
-                        "</td><td><input type='button' class='btn btn-primary btn-sm anadir' data-id='" + item.id + "'  value='añadir'></td></tr>");
+                        "</td><td>" + " " +
+                        "</td><td><input type='button' class='borrar' data-id='" + item.id + "'  value='Borrar'></td><"+
+                        "</td><td><input type='button' class='editar' data-id='" + item.id + "'  value='Editar'></td></tr>");
                 });
-                $('.anadir').on('click', usuarios);
+                $('#cuerpo_usuarios').append("<tr><td><input type='button' class='añadir' data-id=''  value='Añadir'></td></tr>");
+                $('.borrar').on('click', usuarios);
+                $('.editar').on('click', usuarios);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 abError(errorThrown);
