@@ -9,7 +9,7 @@ if (isset($_SESSION["usuario"])) {
     echo $_SESSION['usuario'];
 } else {
     if (!empty($_POST['login']) && !empty($_POST['password'] )) {
-        require_once("modelos/modelo_login.php");
+        require_once("modelos/modelo_usuario.php");
         $login = new usuario();
         $datos_login = $login->get_login( $_POST['login'] , $_POST['password'] );
         if (!empty($datos_login)){
@@ -25,11 +25,11 @@ if (isset($_SESSION["usuario"])) {
         require_once("controladores/controlador_pelicula.php");
         }else {
             require_once("vistas/login_vista.php");
-            require_once("modelos/modelo_login.php");
+            require_once("modelos/modelo_usuario.php");
     }
     } else {
             require_once("vistas/login_vista.php");
-            require_once("modelos/modelo_login.php");
+            require_once("modelos/modelo_usuario.php");
     }
 }
 
