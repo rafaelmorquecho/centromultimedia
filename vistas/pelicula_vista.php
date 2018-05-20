@@ -13,7 +13,7 @@
         <script src="vistas/js/pelicula_vista.js"></script>
         <link rel="stylesheet" type="text/css" href="vistas/css/pelicula_vista.css">
     </head>
-    <body>
+    <body> 
         <header>
             <h1 id ="titulo"></h1>
             <div class="login">
