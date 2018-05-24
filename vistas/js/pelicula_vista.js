@@ -139,22 +139,27 @@ $(".sesion").click(function () {
                 var usuario = $.parseJSON(data);
                 console.log(usuario);
                 
-                    $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>Apellidos</th><th>Email</th><th></th></tr></thead>\
+                    $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>logins</th><th>Email</th><th></th></tr></thead>\
                 <tbody id='cuerpo_usuarios'><tbody></table>");
                     //$('#usuarios').css('visibility', 'visible');
                     $('#usuario').hide();
                 
     
-                $.each(usuario, function (i, item) {
-                    $('#cuerpo_usuarios').append("<tr><td>" + item.nombre+ "</td><td>" +
-                        item.login + "</td><td>" + item.email +
-                        "</td><td>" + " " +
+                    $.each(usuario, function(i,item) {
+                        
+                    $('#cuerpo_usuarios').append("<tr><td>" + item.nombre + "</td><td>" +
+                    item.login + "</td><td>" + item.email +
+                        "</td><td>" + item.tipo  +
                         "</td><td><input type='button' class='borrar' data-id='" + item.id + "'  value='Borrar'></td><"+
                         "</td><td><input type='button' class='editar' data-id='" + item.id + "'  value='Editar'></td></tr>");
+                    
                 });
+
                 $('#cuerpo_usuarios').append("<tr><td><input type='button' class='añadir' data-id=''  value='Añadir'></td></tr>");
-                $('.borrar').on('click', usuarios);
-                $('.editar').on('click', usuarios);
+                $('.borrar').on('click', usuariosBorrar);
+                $('.editar').on('click', usuariosEditar);
+                $('.añadir').on('click', usuariosAñadir);
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 abError(errorThrown);
@@ -162,11 +167,55 @@ $(".sesion").click(function () {
             }
         });
 
-        function usuarios(){
-
-        }
+        function usuariosBorrar(){
+            var id_usuario = $(this).attr('data-id');
+            
+            var dataSent = {
+                id:id_usuario
+            
+            };
     
         
+            $.ajax({
+                url: "ajax/usuario_borrar.php",
+                type: "POST",
+                data: dataSent,
+                success: function (data, textStatus, jqXHR) {
+                    $('#usuarios').remove();
+                    var usuario_borrado = data;
+                    alert(data);
+                    if(usuario_borrado > 0){
+                    alert("El Usuario con id " + id_usuario + "ha sido borrado" );
+                    console.log(usuario_borrado);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    abError(errorThrown);
+                    return false;
+                }
+            });
+
+
+
+        }
+        function usuariosEditar(){
+
+        }
+        function usuariosAñadir(){
+            $('#usuarios').remove();
+            $('#gestion').append("<div><form id='usuarios'>\
+            <label for='nombre'>Nombre: </label><input type='text' name='nombre' id='nombre'>\
+            <br>\
+            <label for='email'>Email: </label><input type='text' name='email' id='email'>\
+            <br>\
+            <label for='login'>login: </label><input type='text' name='login' id='login'>\
+            <br>\
+            <label for='password'>Paswword: </label><input type='password' name='password' id='password'>\
+            <br>\
+            <input type='button' value='Enviar'><input type='reset'>\
+            <form></div>");
+
+        }
     });
 
 
