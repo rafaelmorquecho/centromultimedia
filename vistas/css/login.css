@@ -95,7 +95,7 @@ border-color: #b03535
  
 /* === Estilos del boton de Envio === */
 button.enviar {
-    padding: 9px 17px;
+   padding: 9px 17px;
    font-family: Helvetica,calibri, Arial, sans-serif;
    font-weight: bold;
    line-height: 1;
