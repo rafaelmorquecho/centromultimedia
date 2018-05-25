@@ -9,10 +9,10 @@ error_reporting(E_ALL);
  *
  * This file is part of modelo sin título.
  *
- * Automatically generated on 13.05.2018, 11:51:16 with ArgoUML PHP module 
+ * Automatically generated on 25.05.2018, 19:37:51 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -22,7 +22,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 /**
  * include Tipo
  *
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 require_once('class.Tipo.php');
 
@@ -38,7 +38,7 @@ require_once('class.Tipo.php');
  * Short description of class Usuario
  *
  * @access public
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 class Usuario
 {
@@ -101,7 +101,7 @@ class Usuario
      * Short description of method __construct
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
+     * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
      * @return void
      */
     public function __construct()
@@ -114,7 +114,7 @@ class Usuario
      * Short description of method <<Getter and Setter>>
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
+     * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
      * @return void
      */
     public function <<Getter and Setter>>()

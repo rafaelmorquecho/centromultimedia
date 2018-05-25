@@ -3,16 +3,16 @@
 error_reporting(E_ALL);
 
 /**
- * modelo sin título - class.Tipo.php
+ * modelo sin tï¿½tulo - class.Tipo.php
  *
  * $Id$
  *
- * This file is part of modelo sin título.
+ * This file is part of modelo sin tï¿½tulo.
  *
- * Automatically generated on 13.05.2018, 11:51:16 with ArgoUML PHP module 
+ * Automatically generated on 25.05.2018, 19:37:51 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -22,7 +22,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 /**
  * include Usuario
  *
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 require_once('class.Usuario.php');
 
@@ -38,7 +38,7 @@ require_once('class.Usuario.php');
  * Short description of class Tipo
  *
  * @access public
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 class Tipo
 {
@@ -69,7 +69,7 @@ class Tipo
      * Short description of method __construct
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
+     * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
      * @return void
      */
     public function __construct()
@@ -82,15 +82,9 @@ class Tipo
      * Short description of method <<Setter and Getter>>
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
+     * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
      * @return void
      */
-    public function <<Setter and Getter>>()
-    {
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C86 begin
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C86 end
-    }
-
-} /* end of class Tipo */
+    } /* end of class Tipo */
 
 ?>

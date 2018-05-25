@@ -9,10 +9,10 @@ error_reporting(E_ALL);
  *
  * This file is part of modelo sin t�tulo.
  *
- * Automatically generated on 13.05.2018, 11:51:16 with ArgoUML PHP module 
+ * Automatically generated on 25.05.2018, 19:37:51 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -22,7 +22,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 /**
  * include Artista
  *
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 require_once('class.Artista.php');
 
@@ -38,7 +38,7 @@ require_once('class.Artista.php');
  * Short description of class Rol
  *
  * @access public
- * @author firstname and lastname of author, <author@example.org>
+ * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
  */
 class Rol
 {
@@ -69,7 +69,7 @@ class Rol
      * Short description of method __construct
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
+     * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
      * @return void
      */
     public function __construct($id)
@@ -77,10 +77,11 @@ class Rol
         
             $this->id_rol = $id;
             $this->db=Conectar::conexion();
-            $consulta=$this->db->query("SELECT * FROM `rol` WHERE `id_rol` =" . $this->id_rol .";");
+            $consulta=$this->db->query("SELECT * FROM `rol` WHERE `id_rol` = $this->id_rol ;");
             $consulta->execute();
-            $resultado = $consulta->fetchAll();
-            $this->nombre = $resultado;     
+            $resultado = $consulta->setFetchMode(PDO::FETCH_ASSOC);
+            $resultado = $consulta->fetch();
+            $this->nombre = $resultado['nombre_rol'];       
         
     }
 
@@ -91,8 +92,5 @@ class Rol
 
 
  } /* end of class Rol */
-
-
- 
 
 ?>

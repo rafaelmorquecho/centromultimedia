@@ -2,11 +2,11 @@
 
 
 //Llamada al modelo
-require_once("modelos/modelo_pelicula.php");
+require_once("modelos/Class.Pelicula.php");
 
 
 $pelicula=new pelicula();
-$carteles=$pelicula->get_pelicula();
+$carteles=$pelicula->get_carteles();
 
 //Llamada a la vista
 
