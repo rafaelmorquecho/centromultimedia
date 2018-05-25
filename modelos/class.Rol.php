@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 
 /**
- * modelo sin título - class.Rol.php
+ * modelo sin tï¿½tulo - class.Rol.php
  *
  * $Id$
  *
- * This file is part of modelo sin título.
+ * This file is part of modelo sin tï¿½tulo.
  *
  * Automatically generated on 13.05.2018, 11:51:16 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
@@ -72,25 +72,27 @@ class Rol
      * @author firstname and lastname of author, <author@example.org>
      * @return void
      */
-    public function __construct()
+    public function __construct($id)
     {
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C3F begin
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C3F end
+        
+            $this->id_rol = $id;
+            $this->db=Conectar::conexion();
+            $consulta=$this->db->query("SELECT * FROM `rol` WHERE `id_rol` =" . $this->id_rol .";");
+            $consulta->execute();
+            $resultado = $consulta->fetchAll();
+            $this->nombre = $resultado;     
+        
     }
 
-    /**
-     * Short description of method <<Setter and Getter>>
-     *
-     * @access public
-     * @author firstname and lastname of author, <author@example.org>
-     * @return void
-     */
-    public function <<Setter and Getter>>()
+    public function getNombre()
     {
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C61 begin
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C61 end
+        return $this->nombre;
     }
 
-} /* end of class Rol */
+
+ } /* end of class Rol */
+
+
+ 
 
 ?>

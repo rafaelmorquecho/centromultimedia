@@ -1,7 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
-require_once("../conexion/conexion.php");
+require_once("conexion/conexion.php");
 
 /**
  * modelo sin t�tulo - class.Artista.php
@@ -101,21 +101,8 @@ class Artista
         $consulta=$this->db->query("SELECT * FROM `artista` WHERE `id_artista` =" .  $id .";");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
-        $this->nombre = $resultado['nombre'];
-        $this->rol = $resultado['rol'];
-        
+        $this->nombre = $resultado[0]['nombre'];
     }
-
-
-
-    /**
-     * Short description of method <<Setter and Getter>>
-     *
-     * @access public
-     * @author firstname and lastname of author, <author@example.org>
-     * @return void
-     */
-   
 
 
     /**
@@ -144,7 +131,5 @@ class Artista
 } /* end of class Artista */
 
 
-$artista1 = new artista(200);
-echo "<pre>" . print_r($artista1->getNombre) . "</pre>";
 
 ?>
