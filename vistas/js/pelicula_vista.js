@@ -65,16 +65,16 @@ $(".sesion").click(function () {
                 $('#cuerpo').remove();
                 datos = $.parseJSON(data);
 
-                //console.log(datos);
+                console.log(datos);
                 
                 $('#peliculas-info').append("<tbody id='cuerpo'>");
                 $('#tabla').css('visibility', 'visible');
-                $('#cuerpo').append("<img style='float:right' src= '" + datos['titulo'].cartel + "'" + " alt='Caratula' ><h3>Sinopsis</h3><br><p>" + datos['titulo'].sinopsis + "</p>")
-                $("#peliculaDialog").dialog("option", "title", datos['titulo'].titulo);
+                $('#cuerpo').append("<img style='float:right' src= '" + datos.cartel + "'" + " alt='Caratula' ><h3>Sinopsis</h3><br><p>" + datos.sinopsis + "</p>")
+                $("#peliculaDialog").dialog("option", "title", datos.titulo);
                 $('#cuerpo').append("<h3>Actores</h3><p>");
                 $.each(datos['actores'], function (i, item) {
-                    $('#cuerpo').append( item.nombre + ", ");
-                    $("#peliculaDialog").dialog("option", "title", datos['titulo'].titulo);
+                    $('#cuerpo').append( item + ", ");
+                    $("#peliculaDialog").dialog("option", "title", datos.titulo);
                 });
                 $('#cuerpo').append("</p>");
 

@@ -398,6 +398,54 @@ public function get_carteles(){
     $this->pelicula = $consulta->fetchAll();        
     return $this->pelicula;
 }
+
+    /**
+     * Get short description of attribute cartel
+     *
+     * @return  String
+     */ 
+    public function getCartel()
+    {
+        return $this->cartel;
+    }
+
+    /**
+     * Set short description of attribute cartel
+     *
+     * @param  String  $cartel  Short description of attribute cartel
+     *
+     * @return  self
+     */ 
+    public function setCartel(String $cartel)
+    {
+        $this->cartel = $cartel;
+
+        return $this;
+    }
+
+    /**
+     * Get short description of attribute sinopsis
+     *
+     * @return  String
+     */ 
+    public function getSinopsis()
+    {
+        return $this->sinopsis;
+    }
+
+    /**
+     * Set short description of attribute sinopsis
+     *
+     * @param  String  $sinopsis  Short description of attribute sinopsis
+     *
+     * @return  self
+     */ 
+    public function setSinopsis(String $sinopsis)
+    {
+        $this->sinopsis = $sinopsis;
+
+        return $this;
+    }
 } /* end of class Pelicula */
 
 ?>

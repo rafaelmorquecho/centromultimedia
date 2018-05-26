@@ -91,6 +91,30 @@ class Rol
     }
 
 
+
+    /**
+     * Get short description of attribute id_rol
+     *
+     * @return  int
+     */ 
+    public function getId_rol()
+    {
+        return $this->id_rol;
+    }
+
+    /**
+     * Set short description of attribute id_rol
+     *
+     * @param  int  $id_rol  Short description of attribute id_rol
+     *
+     * @return  self
+     */ 
+    public function setId_rol(int $id_rol)
+    {
+        $this->id_rol = $id_rol;
+
+        return $this;
+    }
  } /* end of class Rol */
 
 ?>
