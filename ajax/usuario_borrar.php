@@ -11,5 +11,5 @@ $usuario=new usuario();
 $id = $_POST['id'];
 $datos = $usuario->borrar_usuario($id);
 
-echo $datos;
+echo json_encode ($datos);
 ?>

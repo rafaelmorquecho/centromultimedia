@@ -123,7 +123,7 @@ $(".sesion").click(function () {
         ]
     });
 
-    $('#gestionUsuarios').click(function () {
+    $('#gestionUsuarios').click(function mostrarUsuarios () {
         
         var dataSent = {
             
@@ -162,7 +162,7 @@ $(".sesion").click(function () {
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                abError(errorThrown);
+                alert(errorThrown);
                 return false;
             }
         });
@@ -182,15 +182,18 @@ $(".sesion").click(function () {
                 data: dataSent,
                 success: function (data, textStatus, jqXHR) {
                     $('#usuarios').remove();
-                    var usuario_borrado = data;
-                    alert(data);
+                    var usuario_borrado = $.parseJSON(data);
+                    alert(data)
                     if(usuario_borrado > 0){
                     alert("El Usuario con id " + id_usuario + "ha sido borrado" );
                     console.log(usuario_borrado);
+                    
+
                     }
+                    mostrarUsuarios ();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    abError(errorThrown);
+                    alert(errorThrown);
                     return false;
                 }
             });
@@ -199,8 +202,105 @@ $(".sesion").click(function () {
 
         }
         function usuariosEditar(){
+            var checkedUser;
+            var checkedAdmin;
+            var admin;
+            var usuario;
+            var id_usuario = $(this).attr('data-id');
+            var dataSent = {
+                id:id_usuario
+            };
+    
+            $.ajax({
+                url: "ajax/usuarios_editar.php",
+                type: "POST",
+                data: dataSent,
+                success: function (data, textStatus, jqXHR) {
+                   
+                    $('#usuarios').remove();
+                    var usuario = $.parseJSON(data);
+                    console.log(usuario);
+                    $.each(usuario, function(i,item) {
+                        $.each(item.tipo, function(j,item2) {
+                            if(item2 === 'admin' ){
+                                checkedAdmin = 'checked';
+                            }
+                             
+                            if(item2 == 'usuario' ){
+                                checkedUser = 'checked'
+                             }          
+                 
+                         });  
+            
+            $('#gestion').append("<div><form id='usuarios'>\
+            <label for='id'>ID </label><input type='text' name='id' disabled value=" +"'"+ id_usuario +"'"+ "id='id_usuario'>\
+            <br>\
+            <label for='nombre'>Nombre: </label><input type='text' name='nombre' value=" +"'"+ item.nombre +"'"+ "id='nombre'>\
+            <br>\
+            <label for='email'>Email: </label><input type='text' name='email' value=" +"'"+ item.email +"'"+ " id='email'>\
+            <br>\
+            <label for='login'>login: </label><input type='text' name='login'value=" +"'"+ item.login +"'"+ " id='login'>\
+            <br>\
+            <label for='password'>Paswword: </label><input type='password' value=" +"'"+ item.password +"'"+ " name='password' id='password'>\
+            <br>");
+            $('#usuarios').append("<input type='checkbox' "+ checkedAdmin + "  value ='si' name='admin' id='admin' data-id='1'>admin\
+            <br>");
+            $('#usuarios').append("<input type='checkbox'   "+ checkedUser + "  value ='si' name='usuario' id='usuario' data-id='2'>usuario\
+            <br>");
+            }); 
+            $('#usuarios').append("<input type='button' value='Enviar' id='btn-enviar'><input type='reset'>\
+            <form></div>");
+        },
 
+        error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    return false;
+                }
+            });
         }
+
+        $(document).on("click ", "#btn-enviar", function() {
+        
+            mostrarUsuarios ();
+            
+
+            var dataSent = {
+                
+                id:$('#id_usuario').val(),
+                nombre:$('#nombre').val(),
+                email: $('#email').val(),
+                login: $('#login').val(),
+                password:$('#password').val(),
+                admin:$('input:checkbox[name=admin]:checked').val(),
+                usuario:$('input:checkbox[name=usuario]:checked').val(),
+            
+            };
+    
+        
+            $.ajax({
+                url: "ajax/update_usuario.php",
+                type: "POST",
+                data: dataSent,
+                success: function (data, textStatus, jqXHR) {
+                    
+                    /*var usuario_modificado = $.parseJSON(data);
+                    alert(usuario_modificado)
+                    if(usuario_modificado > 0){
+                    alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
+                    console.log(usuario_modificado);
+
+                    }*/
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    return false;
+                }
+            });
+            
+
+        });
+
+
         function usuariosAñadir(){
             $('#usuarios').remove();
             $('#gestion').append("<div><form id='usuarios'>\

@@ -6,6 +6,7 @@ class usuario{
     private $usuario;
     private $password;
     private $clase;
+    private $fecha;
     private $cuantas;
     private $login = array();
     
@@ -68,5 +69,61 @@ class usuario{
         return $this->cuantas;
     }
 
+    public function editar_usuario($id){
+        $consulta=$this->db->query("SELECT * FROM `usuario` where `id` = $id;");
+        $consulta->execute();
+        $this->usuario = $consulta->fetchAll();        
+        return $this->usuario;   
+    }
+
+    public function update_usuario($id,$nombre,$email,$login,$password,$admin,$usuario){
+        $update=$this->db->query("UPDATE `usuario` SET `nombre`='$nombre',`email`='$email',`login`='$login',`password`='$password' WHERE id = $id");
+        $delete=$this->db->query("DELETE FROM `usuario_clase` WHERE `id_usuario` = $id;");
+        $delete->execute();
+        
+        if ($admin =='si') {
+            $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,2);"); 
+        }
+        if ($usuario =='si') {
+            $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,1);"); 
+        }
+
+
+        
+        
+    
+    
+        
+    }
+
+
+    /*$conn->beginTransaction();
+
+        $restar = $conn->prepare($update);
+        $restar->execute();
+
+        $insertar = $conn->prepare($sql);
+        $insertar->execute();
+
+
+        $cuenta = $insertar->rowCount();
+        $cuenta1 = $restar->rowCount();
+
+        if ($cuenta == 1 && $cuenta1 == 1) {
+
+            $conn->commit();
+            
+            echo "<div><p> $cuenta registro creado</p>";
+        echo "<div><p> $cuenta1 registro modificado</p>";
+            echo "<p>commit<p></div>";
+        } else {
+            $conn->rollBack();
+            echo "<div><p>rollBack()</p>";
+             echo "><p>no se realizaron cambios</p></div>";
+        }
+
+
+    {"formulario":"nombre=pepe&email=pepe%40correo.com&login=pepe&password=1234&admin=on&usuario=on"}
+*/
 }
 ?>

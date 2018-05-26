@@ -1,11 +1,12 @@
 <?php
 require("../conexion/conexion.php");
 require_once("../modelos/modelo_login.php");
-
+$id = $_POST['id'];
 $permisos=array();
 $datos = array();
 $usuario=new usuario();
-$usuarios = $usuario->get_usuario2();
+$usuarios = $usuario->editar_usuario($id);
+//echo "<pre>" . print_r ($usuarios,true) . "</pre>";
 
 
 foreach ($usuarios as $key => $value) {
@@ -19,7 +20,13 @@ foreach ($usuarios as $key => $value) {
     foreach ($permisos as $permiso => $tipo) {
         $datos[$key]['tipo'][] = $tipo['tipo'];
     }
-}
 
+//print_r($datos);
+
+}
+//echo "<pre>" . print_r ($permisos,true) . "</pre>";
+//$datos['usuarios']=$usuarios;
+
+//$datos['permisos']=$permisos;
 echo json_encode ($datos);
 ?>
