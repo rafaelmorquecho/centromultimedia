@@ -8,7 +8,7 @@ $(document).ready(function () {
 //////////////////////////////////////////////////////////////////////////////
 // ventana de logeo    
 
-$(".sesion").click(function () {
+    $(".sesion").click(function () {
         $("#loginDialog").dialog('open');
         $('#usuarios').remove();
         $('#usuario').show();
@@ -51,7 +51,7 @@ $(".sesion").click(function () {
     $('.cartel').click(function () {
         $("#peliculaDialog").dialog('open');
         var id = $(this).attr("id");
-        console.log("Handler for .click() called." + id);
+        //console.log("Handler for .click() called." + id);
 
         var dataSent = {
             id: id
@@ -65,7 +65,7 @@ $(".sesion").click(function () {
                 $('#cuerpo').remove();
                 datos = $.parseJSON(data);
 
-                console.log(datos);
+                //console.log(datos);
                 
                 $('#peliculas-info').append("<tbody id='cuerpo'>");
                 $('#tabla').css('visibility', 'visible');
@@ -137,7 +137,7 @@ $(".sesion").click(function () {
             success: function (data, textStatus, jqXHR) {
                 $('#usuarios').remove();
                 var usuario = $.parseJSON(data);
-                console.log(usuario);
+                //console.log(usuario);
                 
                     $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>logins</th><th>Email</th><th></th></tr></thead>\
                 <tbody id='cuerpo_usuarios'><tbody></table>");
@@ -165,15 +165,15 @@ $(".sesion").click(function () {
                 alert(errorThrown);
                 return false;
             }
-        });
+    });
 
-        function usuariosBorrar(){
-            var id_usuario = $(this).attr('data-id');
+    function usuariosBorrar(){
+        var id_usuario = $(this).attr('data-id');
             
-            var dataSent = {
-                id:id_usuario
+        var dataSent = {
+            id:id_usuario
             
-            };
+        };
     
         
             $.ajax({
@@ -186,7 +186,7 @@ $(".sesion").click(function () {
                     alert(data)
                     if(usuario_borrado > 0){
                     alert("El Usuario con id " + id_usuario + "ha sido borrado" );
-                    console.log(usuario_borrado);
+                    //console.log(usuario_borrado);
                     
 
                     }
@@ -197,8 +197,6 @@ $(".sesion").click(function () {
                     return false;
                 }
             });
-
-
 
         }
         function usuariosEditar(){
@@ -219,7 +217,7 @@ $(".sesion").click(function () {
                    
                     $('#usuarios').remove();
                     var usuario = $.parseJSON(data);
-                    console.log(usuario);
+                    //console.log(usuario);
                     $.each(usuario, function(i,item) {
                         $.each(item.tipo, function(j,item2) {
                             if(item2 === 'admin' ){
@@ -233,15 +231,15 @@ $(".sesion").click(function () {
                          });  
             
             $('#gestion').append("<div><form id='usuarios'>\
-            <label for='id'>ID </label><input type='text' name='id' disabled value=" +"'"+ id_usuario +"'"+ "id='id_usuario'>\
+            <label for='id'>ID </label><input type='text' name='id' disabled value=" +"'"+ id_usuario +"'"+ "id='id_usuario' required >\
             <br>\
-            <label for='nombre'>Nombre: </label><input type='text' name='nombre' value=" +"'"+ item.nombre +"'"+ "id='nombre'>\
+            <label for='nombre'>Nombre: </label><input type='text' name='nombre' value=" +"'"+ item.nombre +"'"+ "id='nombre' required >\
             <br>\
-            <label for='email'>Email: </label><input type='text' name='email' value=" +"'"+ item.email +"'"+ " id='email'>\
+            <label for='email'>Email: </label><input type='text' name='email' value=" +"'"+ item.email +"'"+ " id='email' required >\
             <br>\
-            <label for='login'>login: </label><input type='text' name='login'value=" +"'"+ item.login +"'"+ " id='login'>\
+            <label for='login'>login: </label><input type='text' name='login'value=" +"'"+ item.login +"'"+ " id='login' required >\
             <br>\
-            <label for='password'>Paswword: </label><input type='password' value=" +"'"+ item.password +"'"+ " name='password' id='password'>\
+            <label for='password'>Paswword: </label><input type='password' value=" +"'"+ item.password +"'"+ " name='password' id='password' required >\
             <br>");
             $('#usuarios').append("<input type='checkbox' "+ checkedAdmin + "  value ='si' name='admin' id='admin' data-id='1'>admin\
             <br>");
@@ -304,23 +302,61 @@ $(".sesion").click(function () {
         function usuariosAñadir(){
             $('#usuarios').remove();
             $('#gestion').append("<div><form id='usuarios'>\
-            <label for='nombre'>Nombre: </label><input type='text' name='nombre' id='nombre'>\
+            <label for='nombre'>Nombre: </label><input type='text' name='nombre' id='nombre' required>\
             <br>\
-            <label for='email'>Email: </label><input type='text' name='email' id='email'>\
+            <label for='email'>Email: </label><input type='text' name='email' id='email' required>\
             <br>\
-            <label for='login'>login: </label><input type='text' name='login' id='login'>\
+            <label for='login'>login: </label><input type='text' name='login' id='login' required>\
             <br>\
-            <label for='password'>Paswword: </label><input type='password' name='password' id='password'>\
-            <br>\
-            <input type='button' value='Enviar'><input type='reset'>\
+            <label for='password'>Paswword: </label><input type='password' name='password' id='password' required>\
+            <br>");
+            
+            $('#usuarios').append("<input type='checkbox'  value ='si' name='admin' id='admin' data-id='1'>admin\
+            <br>");
+            $('#usuarios').append("<input type='checkbox' value ='si' name='usuario' id='usuario' data-id='2'>usuario\
+            <br>");
+
+            $('#usuarios').append("<input type='button' id='btn-añadir' value='Enviar'><input type='reset'>\
             <form></div>");
 
         }
     });
 
 
+    $(document).on("click ", "#btn-añadir", function() {
+        
+        var dataSent = {
+            
+            id:$('#id_usuario').val(),
+            nombre:$('#nombre').val(),
+            email: $('#email').val(),
+            login: $('#login').val(),
+            password:$('#password').val(),
+            admin:$('input:checkbox[name=admin]:checked').val(),
+            usuario:$('input:checkbox[name=usuario]:checked').val(),
+        
+        };
 
+        $.ajax({
+            url: "ajax/insert_usuario.php",
+            type: "POST",
+            data: dataSent,
+            success: function (data, textStatus, jqXHR) {
 
+                /*var usuario_modificado = $.parseJSON(data);
+                alert(usuario_modificado)
+                if(usuario_modificado > 0){
+                alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
+                console.log(usuario_modificado);
+
+                }*/
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+                return false;
+            }
+        });
+    });
 });//fin
 
 

@@ -9,7 +9,7 @@
 </head>
     <body>
         <div class="container ">
-            <form class="formulario" name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" onsubmit="return valida()">
+            <form class="formulario" name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                 <ul>
                     <li>
                         <h2>LOGIN</h2>

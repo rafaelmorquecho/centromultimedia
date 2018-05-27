@@ -30,9 +30,6 @@ class usuario{
         return $this->clase;
     }
 
-
-
-
     public function get_usuario(){
         $consulta=$this->db->query("SELECT DISTINCT * FROM `usuario` INNER join `usuario_clase` on (id = id_usuario) INNER join clase USING (id_clase)") ;
         $consulta->execute();
@@ -61,7 +58,6 @@ class usuario{
         return $this->login;
     }
 
-
     public function borrar_usuario($id){
         $delete=$this->db->query("DELETE FROM `usuario` WHERE `id` = $id");
         $delete->execute();
@@ -87,14 +83,32 @@ class usuario{
         if ($usuario =='si') {
             $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,1);"); 
         }
-
-
-        
-        
-    
-    
-        
     }
+
+    public function insertar_usuario($nombre,$email,$login,$password,$admin,$usuario){
+        $insertar = $this->db->query("INSERT INTO `usuario`(`id`, `nombre`, `email`, `login`, `password`, `fecha_nacimiento`) VALUES ('','$nombre','$email','$login','$password','');");
+        $smtp = $this->db->query("SELECT MAX(id) AS id FROM `usuario`");
+        $smtp->execute();
+        $id = $smtp->fetchAll();
+        $id = $id[0]['id'];
+
+
+        if ($admin =='si') {
+            $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,2);"); 
+        }
+        if ($usuario =='si') {
+            $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,1);"); 
+        }
+
+    print_r($id);
+    }
+        
+        
+        
+    
+    
+        
+    
 
 
     /*$conn->beginTransaction();
