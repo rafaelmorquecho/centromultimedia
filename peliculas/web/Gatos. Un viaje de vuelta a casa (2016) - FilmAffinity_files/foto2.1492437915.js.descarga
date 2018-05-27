@@ -1,0 +1,131 @@
+$(document).ready(function(){
+    var movieId = $('.rate-movie-box').data('movie-id'),
+    tcCommon = TranslateContext.getInstance(commonTextsJs);
+
+    if(typeof movieId == 'undefined' || movieId == null)
+        movieId = $('.moviecard-section-container').data('movie-id');
+
+    $('#movie-main-image-container, .moviecard-section-container .float-left').on('click', function(e){
+        e.preventDefault();
+
+        if( $('.lightbox').length == 1 && $('#movie-main-image-container').data('length') != 1)
+        {
+            $.post(pageUrl('movies.ajax.php'), ({action: 'getImagesUrl', movieId: movieId}), function(data){
+
+                //fix if only one image
+                if( data.urls.length == 1 )
+                    $('#movie-main-image-container').attr('data-length', 1);
+
+                for( i = 1; i < data.urls.length; i++ ) {
+                    var desc = ''
+
+                    if( data.urls[i].desc != null && data.urls[i].desc != '')
+                        desc = '<div><strong>' + tcCommon.t('desc') + ':</strong> ' + data.urls[i].desc + '</div>'
+
+                    var img = $('<img />',
+                                 { class: 'mygallery',
+                                   src: data.urls[i].url,
+                                   width: 300,
+                                   title: '<div><strong>' +  tcCommon.t('type') +  ':</strong> '
+                                            + data.urls[i].typeDesc + '</div>'
+                                            + '<div><strong>' + tcCommon.t('country') + ':</strong> '
+                                            + data.urls[i].country + '</div>' + desc
+                                 }).appendTo('#movie-main-image-container').wrap('<a href="' + data.urls[i].url + '" class="lightbox hidden"></a>');
+                }
+
+                $('.lightbox').colorbox({
+                    open: true,
+                    rel: '.lightbox',
+                    transition:"elastic",
+                    previous: '',
+                    next: '',
+                    fastIframe: false,
+                    scalePhotos: true,
+                    maxWidth: '95%',
+                    maxHeight: '95%',
+                    onComplete: function(){
+                        $(".cboxPhoto").click(function(){
+                            $.colorbox.close();
+                        });
+
+                        $('#cboxOverlay').bind('click', function(e){
+                            e.stopImmediatePropagation();
+                            e.preventDefault();
+                            e.stopPropagation();
+                          return false;
+                        });
+
+                        if( $(this).find('img').prop('title').length > 0 )
+                            $("#cboxTitle").css('background-color', '#FFF').html( $(this).find('img').prop('title') );
+                        else
+                            $("#cboxTitle").css('background-color', '#FFF').html( $(this).prop('title') );
+
+                        var src = $('.cboxPhoto').attr('src');
+
+                        $('#cboxContent').find('#cboxCurrent').html('<a href="http://www.facebook.com/sharer.php?u=' + src + '" target="_BLANK"><img src="/images/gif/facebook-share.gif"></img></a>&nbsp;<a href="http://twitter.com/home?status=' + src +'" title="Comp&aacute;rtelo en Twitter" target="_BLANK"><img src="/images/gif/share_icon_twitter.gif"></img></a>');
+                        $('#cboxContent').find('#cboxCurrent').css('display', 'block');
+
+                        if( data.urls.length > 1 ){
+                            $('#cboxContent').find('.cboxPhoto').before('<a id="cboxPrevious2" href="#"><img src="/images/imghovnav_prev.png"></a>');
+                            $('#cboxContent').find('.cboxPhoto').before('<a id="cboxNext2" href="#"><img src="/images/imghovnav_next.png"></a>');
+                        }
+
+                        $("#cboxNext2").click(function(event){
+                            event.preventDefault();
+                            $.colorbox.next();
+                        });
+
+                        $("#cboxPrevious2").click(function(event){
+                            event.preventDefault();
+                            $.colorbox.prev();
+                        });
+
+                        var height = $('.cboxPhoto').height();
+                        var windowHeight = $(window).height();
+
+                        var windowWidth = $(window).width();
+                        var photoWidth = $('.cboxPhoto').width();
+
+                        if(photoWidth > windowWidth)
+                        {
+                            $("#cboxNext2").css('position', 'fixed');
+                            $("#cboxNext2").css('right', '20px');
+
+                            $("#cboxPrevious2").css('position', 'fixed');
+                            $("#cboxPrevious2").css('left', '20px');
+                        }
+
+                        if(height > windowHeight)
+                        {
+                            $("#cboxPrevious2").css('padding-top', (windowHeight / 2) - 213);
+                            $("#cboxNext2").css('padding-top', (windowHeight / 2) - 213);
+                        }
+                        else
+                        {
+                            $("#cboxPrevious2").css('padding-top', (height / 2) - 213);
+                            $("#cboxNext2").css('padding-top', (height / 2) - 213);
+                        }
+                        },
+                        onOpen: function(){
+                            var title = $('.lightbox').data('t');
+                            var dat_t = $('.lightbox').attr('title');
+
+                            $('.lightbox').attr('title', title);
+                            $('.lightbox').data('t', dat_t);
+
+                            $('object').css({'visibility':'hidden'});
+                        },
+                        onClosed: function(){
+                            var title = $('.lightbox').data('t');
+                            var dat_t = $('.lightbox').attr('title');
+
+                            $('.lightbox').attr('title', title);
+                            $('.lightbox').data('t', dat_t);
+
+                            $('object').css({'visibility':'inherit'});
+                        }
+                    });
+                })
+            }
+    })
+});

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://secure.flashtalking.com/63002/1495382/videowall_wall.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<style></style><style>
+			body{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			#close{
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				display: block;
+				visibility: hidden;
+				cursor: pointer;
+				z-index: 10;
+			}
+			ft-video::shadow video{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: 100%;
+				height: 100%;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				object-fit: cover;
+			}
+			ft-video video, ft-video iframe, ft-video canvas {
+			    width: 100% !important;
+			    height: 100% !important;
+			    object-fit: cover;
+			}
+			video {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				min-width: 100% !important;
+				min-height: 100% !important;
+				width: 100% !important;
+				height: 100% !important;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				object-fit: cover;
+			}
+			#vidHolder{
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0px;
+				left: 0px;
+				z-index: 1;
+			}
+			#poster{
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0px;
+				left: 0px;
+				background-image: url(images/bg.jpg);
+				background-size: cover;
+				z-index: 2;
+			}
+		</style>
+	</head>
+	<body onload="init();">
+		<div id="close"><img src="./close.png"></div>
+		<ft-click clicktag="1" style="width:100%;height:100%;position:absolute;z-index:5;cursor: pointer;"></ft-click>
+		<div id="vidHolder">
+			<ft-video name="video2" id="vid1"></ft-video>
+		</div>
+		<div id="poster"></div>
+		<script src="./html5API.js"></script>
+		<script type="text/javascript">
+			var video 			= myFT.$("#video"),
+				close			= document.getElementById("close"),
+				intervaloVideo,
+				isExpanded=false,
+				loops = 1;
+
+			myFT.$("#close").on("click", function(){
+				//console.log("end");
+				myFT.$("#vidHolder").css("z-index","1");
+				myFT.$("#poster").css("z-index","2");
+				myFT.send("end");
+				close.style.visibility = "hidden";
+				vid1.pause();
+				vid1.muted = true;
+				isExpanded=false;
+			})
+
+			myFT.on("talk", function(){
+				myFT.$("#vidHolder").css("z-index","2");
+				myFT.$("#poster").css("z-index","1");
+				close.style.visibility = "visible";
+				vid1.play();
+				isExpanded=true;
+				initVideoInterval();
+			});
+
+			function initTest(){
+				myFT.$("#vidHolder").css("z-index","2");
+				myFT.$("#poster").css("z-index","1");
+				close.style.visibility = "visible";
+				vid1.play();
+				isExpanded=true;
+				initVideoInterval();
+			}
+
+			function initVideoInterval(){
+				intervaloVideo = setInterval(function(){
+		           	if(vid1.currentTime>19){
+		           		//console.log("SMARTVIEW");
+						myFT.tracker("trackingview");
+						myFT.send("SMARTVIEW");
+						clearInterval(intervaloVideo);
+					}
+				},500);
+			}
+
+			function init(){
+				 //initTest();
+			}
+		</script>
+	
+
+		
+</body></html>

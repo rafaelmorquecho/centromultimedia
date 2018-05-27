@@ -1,0 +1,1048 @@
+
+<!-- saved from url=(0056)https://secure.flashtalking.com/63038/1496856/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style></style>
+		<style>
+			body{
+				margin:0;
+				/*font-family: 'Montserrat', sans-serif;*/
+				font-size:1em;
+			}
+			#unexpanded{
+				width:980px;
+				height:200px;
+				position: absolute;
+				z-index: 1;
+				/*background-image: url(images/ref.png);*/
+			}
+			.expanded{
+				position: fixed;
+				width:100%;
+				height:100%;
+				position:absolute;
+				text-align: center;
+				vertical-align: middle;
+				z-index: 10;
+				opacity: 0;
+				display: none;
+			}
+			#expandedHolder{
+				width: 980px;
+				height: 600px;
+				z-index: 20;
+				top: 50%;
+  				-webkit-transform: translateY(-50%);
+ 				-ms-transform: translateY(-50%);
+  				transform: translateY(-50%);
+				position: absolute;
+                left:0;
+                right:0;
+                margin-left:auto;
+                margin-right:auto;
+                overflow: hidden;
+                opacity: 0;
+			}
+			#dimmer{
+				position: fixed;
+				top:0px;
+				left:0px;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,.6);
+				opacity: 0;
+				z-index: 1;
+			}
+			#ctBtn{
+				position: absolute;
+				width: 980px;
+				height: 200px;
+				z-index: 2;
+			}
+            #ctBtnExpanded{
+				position: absolute;
+				width: 980px;
+				height: 600px;
+				z-index: 50;
+			}
+			#closeBtn{
+				width:33px;
+				height:33px;
+				background-image: url(images/closeBtn.jpg);
+				position:absolute;
+				z-index: 60;
+				left: 10px;
+    			top: 10px;
+			}
+			#c2action{
+				position: absolute;
+				right: 0px;
+				top: 73px;
+				width: 245px;
+				height: 26px;
+				background-image: url(images/c2action.png);
+				background-repeat: no-repeat;
+				z-index: 3;
+				opacity: 0;
+			}
+			#overVideo{
+				width: 313px;
+    			height: 176px;
+    			top: 0px;
+    			right: 0px;
+				position: absolute;
+				z-index: 4;
+				cursor: pointer;
+			}
+			#countDown{
+				position: absolute;
+				width: 313px;
+    			height: 176px;
+    			top: 0px;
+    			right: 0px;
+				z-index: 4;
+				opacity: 0;
+			}
+			#desplegandoTxt{
+				position: absolute;
+				left: 110px;
+    			top: 58px;
+				width: 130px;
+				height: 35px;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 10px;
+			}
+			#count{
+				position: absolute;
+				left: 58px;
+				top: 107px;
+    			width: 200px;
+				text-align: center;
+				height: 35px;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 20px;
+			}
+			#progressBarr{
+				position: absolute;
+				margin: 1px 1px 0px 1px;
+				width: 0px;
+				height: 33px;
+				background: #f0292a; 
+				
+			}
+			#progressBarrBg{
+				position: relative;
+				margin: 70px auto;
+				width: 117px;
+				height: 35px;
+				background-color: rgba(0,0,0,.7);
+			}
+			#overlayVidNonExpanded{
+				width: 313px;
+    			height: 176px;
+    			top: 0px;
+    			right: 0px;
+				position: absolute;
+				z-index: 2;
+				background-color: black;
+				opacity: 0;
+
+			}
+			ft-video::shadow video{
+				width: 100%;
+				height: 100%;
+			}
+			ft-video video, ft-video iframe, ft-video canvas {
+			    width: 100% !important;
+			    height: 100% !important;
+			}
+			ft-video {
+				width: 100% !important;
+				height: 100% !important;
+			}
+			ft-video-controls{
+                border-radius: 0px;
+				background: #f0292a; 
+                opacity: .8;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+                font-size: 14px;
+                color:black;
+            }
+
+           .ft-video-progress-bar{
+           		border:0px solid white;	
+           		border-radius: 0px;
+           		height: 3px;
+           }
+           .ft-video-progress-bar::after {
+           		border-radius: 0px;
+           		box-shadow: black 0px 0px 0px inset;
+           }
+			#vidHolderNonExpanded{
+				width: 313px;
+    			height: 176px;
+    			top: 0px;
+    			right: 0px;
+				background-color: black;
+				position: absolute;
+				z-index: 1;
+				overflow: hidden;
+				opacity: 0;
+			}
+			#vidHolderExpanded{
+			    position: absolute;
+				width: 501px;
+				height: 282px;
+			    top: 176px;
+    			z-index: 61;
+    			left: 252px;       
+			}
+			#paddingContainer{
+				width: 95%;
+			    height: 92%;
+			    top: 0px;
+			    left: 0px;
+			    padding-top: 5px;
+			    padding-right: 5px;
+			    padding-bottom: 5px;
+			    padding-left: 5px;
+			}
+			#galleryHolder{
+			    position: absolute;
+				width: 501px;
+				height: 282px;
+			    top: 176px;
+    			z-index: 60;
+    			left: 252px;   
+  				display: none;
+  				overflow: hidden;
+			}
+
+			#sinopsisHolder{
+			    position: absolute;
+				width: 501px;
+				height: 290px;
+			    top: 170px;
+    			z-index: 60;
+    			left: 252px; 
+  				display: none;
+  				opacity: 0;
+  				background-color: rgba(0,0,0,.7);
+			    text-align: left;
+			    color: black;
+			    font-size: 14px;
+			}
+
+			#inner {
+				position: absolute;
+				width: 520px;
+				left: 30px;
+    			padding: 10px;
+			}
+			#controlsHolderExpanded{
+			    position: absolute;
+			    width: 501px;
+			    height: 25px;
+			    top: 433px;
+			    z-index: 64;
+			    left: 252px; 
+			}
+			/*ASSETS NON EXPANDED*/
+
+			#vidNE{
+				width: 313px;
+    			height: 176px;
+    			top: 12px;
+    			right: 44px;
+				position: absolute;
+				z-index: 10;
+			}
+
+			#TTNE{
+				width: 335px;
+				height: 189px;
+				background-image: url(images/TT.png);
+			    top: 0px;
+			    left: 46px;
+				position: absolute;
+				z-index: 2;
+				opacity: 0;
+				background-size: 100% 100%;
+			}
+
+			#releaseDateNE{
+				width: 202px;
+				height: 50px;
+				background-image: url(images/releaseDate.png);
+			    top: 122px;
+    			left: 401px;
+				position: absolute;
+				z-index: 2;
+				opacity: 0;
+				background-size: 100% 100%;
+			}
+
+			#copy1NE{
+				top: 31px;
+    			left: 439px;
+    			width: 127px;
+				height: 19px;
+				background-image: url(images/copy1.png);
+				background-size: 100% 100%;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			#copy2NE{
+				top: 52px;
+    			left: 439px;
+    			width: 127px;
+				height: 19px;
+				background-image: url(images/copy2.png);
+				background-size: 100% 100%;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			#copy3NE{
+				top: 72px;
+    			left: 439px;
+				width: 127px;
+				height: 19px;
+				background-image: url(images/copy3.png);
+				background-size: 100% 100%;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+
+			/*ASSETS EXPANDED*/
+			#TTExpanded{
+				width: 265px;
+				height: 150px;
+				background-image: url(images/TT.png);
+				background-size: 100% 100%;
+			    top: 0px;
+    			left: 252px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			#releaseDate{
+				width: 161px;
+				height: 40px;
+				background-image: url(images/releaseDate.png);
+				background-size: 100% 100%;
+			    top: 96px;
+    			left: 541px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+
+			#copy1E{
+				width: 127px;
+				height: 19px;
+				background-image: url(images/copy1.png);
+				background-size: 100% 100%;
+			    top: 20px;
+    			left: 561px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			#copy2E{
+				width: 127px;
+				height: 19px;
+				background-image: url(images/copy2.png);
+				background-size: 100% 100%;
+			    top: 41px;
+    			left: 561px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			#copy3E{
+				width: 127px;
+				height: 19px;
+				background-image: url(images/copy1.png);
+				background-size: 100% 100%;
+			    top: 63px;
+    			left: 561px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+
+			#logoLaika{
+				width: 26px;
+				height: 16px;
+				background-image: url(images/logoLaika.png);
+			    bottom: 5px;
+			    left: 12px;
+				position: absolute;
+				z-index: 5;
+				opacity: 1;
+			}
+			#logoUniversal{
+				width: 25px;
+				height: 26px;
+				background-image: url(images/logoUniversal.png);
+			    bottom: 5px;
+			    right: 12px;
+				position: absolute;
+				z-index: 10;
+				opacity: 1;
+			}
+			#mono{
+				width: 392px;
+				height: 373px;
+				background-image: url(images/mono.png);
+			    bottom: 0px;
+    			left: 0px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			#kubo{
+				width: 451px;
+				height: 535px;
+				background-image: url(images/kubo.png);
+			    bottom: 0px;
+    			left: 0px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+
+			#cuernos{
+				width: 280px;
+				height: 731px;
+				background-image: url(images/cuernos.png);
+			    bottom: 0px;
+    			right: 0px;
+				position: absolute;
+				z-index: 3;
+				opacity: 0;
+			}
+			
+			#btnVideo{
+				width: 128px;
+				height: 43px;
+				background-image: url(images/btnVideo.png);
+				background-position: 0px 0px;
+			    top: 471px;
+    			left: 273px;
+				position: absolute;
+				z-index: 55;
+  				cursor: pointer;
+			}
+
+			#btnGaleria{
+				width: 128px;
+				height: 43px;
+				background-image: url(images/btnGaleria.png);
+				background-position: 0px 0px;
+			    top: 471px;
+    			left: 435px;
+				position: absolute;
+				z-index: 55;
+  				cursor: pointer;
+			}
+
+			#btnSinopsis{
+				width: 128px;
+				height: 43px;
+				background-image: url(images/btnSinopsis.png);
+				background-position: 0px 0px;
+			    top: 471px;
+    			left: 599px;
+				position: absolute;
+				z-index: 55;
+  				cursor: pointer;
+
+			}
+
+			#btnEntradas{
+				width: 361px;
+				height: 41px;
+				background-image: url(images/btnEntradas.png);
+				background-position: 0px 0px;
+			    top: 536px;
+    			left: 485px;
+				position: absolute;
+				z-index: 55;
+  				cursor: pointer;
+			}
+
+			#fbBtn{
+				width: 33px;
+				height: 33px;
+				background-image: url(images/fbBtn.jpg);
+				background-position: 0px 0px;
+			    top: 538px;
+    			left: 281px;
+				position: absolute;
+				z-index: 66;
+  				cursor: pointer;
+			}
+
+			#twBtn{
+				width: 33px;
+				height: 33px;
+				background-image: url(images/twBtn.jpg);
+				background-position: 0px 0px;
+				top: 538px;
+   				left: 328px;
+				position: absolute;
+				z-index: 66;
+  				cursor: pointer;
+			}
+
+			#inBtn{
+				width: 33px;
+				height: 33px;
+				background-image: url(images/inBtn.jpg);
+				background-position: 0px 0px;
+			    top: 538px;
+			    left: 377px;
+				position: absolute;
+				z-index: 66;
+  				cursor: pointer;
+			}
+
+			#ytBtn{
+				width: 33px;
+				height: 33px;
+				background-image: url(images/ytBtn.jpg);
+				background-position: 0px 0px;
+			    top: 538px;
+    			left: 425px;
+				position: absolute;
+				z-index: 66;
+  				cursor: pointer;
+			}
+
+			#bgExpanded{
+				width: 980px;
+				height: 600px;
+				top: 0px;
+				right: 0px;
+				position: absolute;
+				z-index: 1;
+				background-image: url(images/bgExp.jpg);
+			}
+
+			.active{
+				pointer-events:none;
+			}
+			/*#splashHeader{
+				position: fixed;
+				width: 100%;
+				height: 10px;
+				top: 0px;
+				background-color: white;
+				opacity: 0;
+			}
+			#splashFooter{
+				position: fixed;
+				width: 100%;
+				height: 10px;
+				bottom: 0px;
+				background-color: white;
+				opacity: 0;
+			}*/
+		</style>
+	</head>
+	<body onload="init();">
+		<!-- content -->
+		<div id="container">
+			<div id="unexpanded">
+				<div id="TTNE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="releaseDateNE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="copy1NE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="copy2NE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="copy3NE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="vidNE" style="opacity: 1;">
+					<div id="countDown">
+						<div id="desplegandoTxt">DESPLEGANDO EN</div>
+						<div id="progressBarrBg">
+							<div id="progressBarr"></div>
+						</div>
+						<div id="count">3</div>
+					</div>
+					
+					<div id="overVideo"></div>
+					<div id="c2action" style="opacity: 1; transform: matrix(0.85, 0, 0, 0.85, 0, 0);"></div>
+					<div id="overlayVidNonExpanded"></div>
+					
+					<div id="vidHolderNonExpanded" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+						<ft-video id="vidNonExpanded" name="video1" autoplay="" loop="" muted=""></ft-video>
+					</div>
+				</div>
+				<div id="ctBtn" style="cursor: pointer; background-image: url(&quot;about:blank&quot;);"></div>
+			</div>
+			<div class="expanded" id="expanded">
+				<div id="dimmer"></div>
+				<div id="expandedHolder">
+					<div id="closeBtn" style="cursor: pointer;"></div>
+					<div id="controlsHolderExpanded">
+						<ft-video-controls for="expandedVid" class="" style=""><span class="ft-icon-play">D</span><span class="ft-video-progress-container">  <span class="ft-video-progress-bar">    <span class="ft-video-buffer" style="width: 100%;"></span>    <span class="ft-video-progress" style="width: 0%;"></span>  </span></span><span class="ft-time-display">0:00</span><span class="ft-icon-volume">F</span><span class="ft-icon-fullscreen">B</span></ft-video-controls>
+					</div>
+                    <div id="vidHolderExpanded">
+                    	<ft-video id="expandedVid" name="video2" clicktag="1"></ft-video>
+                    </div>
+
+                    <div id="copy1E"></div>
+					<div id="copy2E"></div>
+					<div id="copy3E"></div>
+
+            		<div id="btnEntradas"></div>
+            		<div id="btnDemuestra"></div>
+            		
+            		<div id="btnVideo"></div>
+            		<div id="btnGaleria"></div>
+            		<div id="btnSinopsis"></div>
+
+            		<div id="fbBtn"></div>
+            		<div id="twBtn"></div>
+            		<div id="inBtn"></div>
+            		<div id="ytBtn"></div>
+            		
+            		<div id="TTExpanded"></div>
+            		<div id="releaseDate"></div>
+
+            		<div id="mono"></div>
+            		<div id="kubo"></div>
+            		<div id="cuernos"></div>
+
+            		<div id="logoLaika"></div>
+            		<div id="logoUniversal"></div>
+
+            		<div id="ctBtnExpanded" style="cursor: pointer; background-image: url(&quot;about:blank&quot;);"></div>
+            		<div id="bgExpanded">
+            		</div>
+            		<div id="galleryHolder"></div>
+                    <div id="sinopsisHolder"><div id="paddingContainer"><img src="./sinopsis.png"></div></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <link href='//fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>-->
+
+		<!-- scripts -->
+		<script src="./html5API.js"></script>
+		<script src="./TweenMax.min.js"></script>
+		<script>
+
+			var isExpanded = false,
+			countVar,
+			intervaloVideo,
+			galeriaLoaded=false,
+			seconds=3,
+			expand = function(){
+				if(!isExpanded){
+					isExpanded=true;
+					myFT.$("#unexpanded").css('opacity','0');
+					myFT.$("#expanded").css('display','block');
+					myFT.$("#expanded").css('opacity','1');
+					
+					myFT.expand();
+
+					expandedAni()
+				}
+			},
+			contract = function(){
+				aniInit();
+				myFT.$("#vidHolderExpanded").css({
+					"display":"block",
+					"z-index":"61"
+				});
+				myFT.$("#galleryHolder").css("z-index","60");
+				myFT.$("#sinopsisHolder").css("z-index","60");
+				TweenMax.to(vidHolderExpanded, 0, {alpha:1});
+				TweenMax.to(controlsHolderExpanded, 0, {alpha:1});
+				TweenMax.to(galleryHolder, 0, {alpha:0});
+				TweenMax.to(sinopsisHolder, 0, {alpha:0});
+
+				expandedVid.stop();
+
+				myFT.$("#unexpanded").css('opacity','1');
+				myFT.$("#expanded").css('display','none');
+
+				myFT.$("#splashOverlay").css('display','none');
+				myFT.$("#splashOverlay").css('opacity','0');
+				myFT.$("#dimmer").css('opacity','0');
+				
+                myFT.contract();                     
+				
+				isExpanded = false;
+				restoreAnis();
+				removeAllActiveButtons();
+
+				
+			};
+
+			function expandedAni(){
+				TweenMax.to(dimmer, 1, {alpha:1,ease: Power3.easeOut});
+
+				TweenMax.to(expandedHolder, 0, {alpha:1,ease: Power3.easeOut});
+				TweenLite.to(bgExpanded, 0, {alpha:1});
+				TweenLite.to(vidHolderExpanded, 0, {scaleX:1, scaleY:1, alpha:1});
+				TweenLite.to(controlsHolderExpanded, 0, {scaleX:1, scaleY:1, alpha:1});
+
+				TweenLite.to(TTExpanded, 0, {scaleX:1, scaleY:1, alpha:1});
+				TweenLite.to(releaseDate, 0, {y:0, alpha:1});
+				TweenLite.to(mono, 0, {y:0,alpha:1});
+				TweenLite.to(kubo, 0, {y:0,alpha:1});
+				TweenLite.to(cuernos, 0, {y:0,alpha:1});
+
+				TweenLite.to(copy1E, 0, {alpha:1,y:0});
+				TweenLite.to(copy2E, 0, {alpha:1,y:0});
+				TweenLite.to(copy3E, 0, {alpha:1,y:0});
+				
+	            TweenLite.to(btnVideo, 0, {y:0, alpha:1});
+	            TweenLite.to(btnSinopsis, 0, {y:0, alpha:1});
+				TweenLite.to(btnGaleria, 0, {y:0, alpha:1});
+				TweenLite.to(btnEntradas, 0, {y:0, alpha:1});
+				TweenLite.to(btnDemuestra, 0, {y:0, alpha:1});
+
+				TweenLite.to(fbBtn, 0, {y:0, alpha:1});
+				TweenLite.to(twBtn, 0, {y:0, alpha:1});
+				TweenLite.to(inBtn, 0, {y:0, alpha:1});
+				TweenLite.to(ytBtn, 0, {y:0, alpha:1});
+				
+
+				TweenMax.from(expandedHolder, 1, {alpha:0,ease: Power3.easeOut});
+				TweenLite.from(bgExpanded, 1, {delay:.1, alpha:0, ease: Power4.easeOut});
+
+				TweenLite.from(mono, 1.5, {delay:.3,y:200, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(kubo, 1.5, {delay:.6,y:200, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(cuernos, 1.5, {delay:.9,y:200, alpha:0, ease: Power4.easeOut});
+				
+				TweenLite.from(TTExpanded, 1, {delay:1.5, y:-100, alpha:0,ease: Power4.easeOut});
+				TweenLite.from(releaseDate, 1, {delay:2, y:+100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(copy1E, 1, {delay:1.9, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(copy2E, 1, {delay:1.8, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(copy3E, 1, {delay:1.7, y:-100, alpha:0, ease: Power4.easeOut});
+
+				
+
+				TweenLite.from(vidHolderExpanded, 1, {delay:2.2, scaleX:.5, scaleY:.5, alpha:0, ease: Power4.easeOut, onComplete:initVideo});
+	            TweenLite.from(controlsHolderExpanded, 1, {delay:2.4, scaleX:.5, scaleY:.5, alpha:0, ease: Power4.easeOut});
+
+	            TweenLite.from(btnEntradas, 1, {delay:2.8,y:50, alpha:0, ease: Power4.easeOut});
+
+	            TweenLite.from(btnVideo, 1, {delay:2.4, y:30, alpha:0, ease: Power4.easeOut,onComplete:function(){
+					myFT.$("#btnVideo").addClass("active");
+					TweenMax.to(btnVideo, .5, {backgroundPosition:'0px -43px', ease: Power4.easeOut});
+				}});
+
+	            TweenLite.from(btnGaleria, 1, {delay:2.6, y:30, alpha:0, ease: Power4.easeOut});	
+	            TweenLite.from(btnSinopsis, 1, {delay:2.8, y:30, alpha:0, ease: Power4.easeOut,onComplete:function(){
+	            	bindMenuListeners("galeria");
+	            	bindMenuListeners("sinopsis");
+	            	applyClicks();
+	            }});
+
+				TweenLite.from(fbBtn, 1, {delay:2.9, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(twBtn, 1, {delay:3, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(inBtn, 1, {delay:3.1, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(ytBtn, 1, {delay:3.2, alpha:0, ease: Power4.easeOut}); 
+
+				myInterval = setInterval(function(){
+
+		           	if(expandedVid.currentTime>=30){
+		           		//window.alert("SMARTVIEW");
+						myFT.tracker("trackingview");
+						myFT.send("SMARTVIEW");
+						clearInterval(myInterval);
+					}
+
+				},500);
+			}
+
+			function removeAllActiveButtons(){
+				myFT.$("#btnVideo").removeClass("active");
+				myFT.$("#btnGaleria").removeClass("active");
+				myFT.$("#btnSinopsis").removeClass("active");
+				myFT.$("#btnVideo").css("background-position","0px 0px");
+				myFT.$("#btnGaleria").css("background-position","0px 0px");
+				myFT.$("#btnSinopsis").css("background-position","0px 0px");
+			}
+
+			function onBtnVideoOver(){
+				TweenMax.to(btnVideo, .5, {backgroundPosition:'0px -43px', ease: Power4.easeOut});
+			}
+			function onBtnVideoOut(){
+				TweenMax.to(btnVideo, .5, {backgroundPosition:'0px 0px', ease: Power4.easeOut});
+			}
+			function onBtnGaleriaOver(){
+				TweenMax.to(btnGaleria, .5, {backgroundPosition:'0px -43px', ease: Power4.easeOut});
+			}
+			function onBtnGaleriaOut(){
+				TweenMax.to(btnGaleria, .5, {backgroundPosition:'0px 0px', ease: Power4.easeOut});
+			}
+			function onBtnSinopsisOver(){
+				TweenMax.to(btnSinopsis, .5, {backgroundPosition:'0px -43px', ease: Power4.easeOut});
+			}
+			function onBtnSinopsisOut(){
+				TweenMax.to(btnSinopsis, .5, {backgroundPosition:'0px 0px', ease: Power4.easeOut});
+			}
+			function onBtnVideoClick(){
+				unBindMenuListeners();
+				removeAllActiveButtons();
+				myFT.$("#btnVideo").css("background-position","0px -43px");
+				myFT.$("#btnVideo").addClass("active");
+				goToSection("video");
+				bindMenuListeners("galeria");
+				bindMenuListeners("sinopsis");
+			}
+
+			function onBtnGaleriaClick(){
+				unBindMenuListeners();
+				removeAllActiveButtons();
+				myFT.$("#btnGaleria").css("background-position","0px -43px");
+				myFT.$("#btnGaleria").addClass("active");
+				goToSection("galeria");
+				bindMenuListeners("sinopsis");
+				bindMenuListeners("video");
+			}
+
+			function onBtnSinopsisClick(){
+				unBindMenuListeners();
+				removeAllActiveButtons();
+				myFT.$("#btnSinopsis").css("background-position","0px -43px");
+				myFT.$("#btnSinopsis").addClass("active");
+				goToSection("sinopsis");
+				bindMenuListeners("galeria");
+				bindMenuListeners("video");
+			}
+
+			function applyClicks(){
+				myFT.applyClickTag(btnEntradas,2);
+				myFT.applyClickTag(fbBtn,3);
+				myFT.applyClickTag(twBtn,4);
+				myFT.applyClickTag(inBtn,5);
+				myFT.applyClickTag(ytBtn,6);
+			}
+
+			function unBindMenuListeners(){
+					myFT.$("#btnVideo").off("mouseover",onBtnVideoOver);
+					myFT.$("#btnVideo").off("mouseout",onBtnVideoOut);
+					myFT.$("#btnGaleria").off("mouseover",onBtnGaleriaOver);
+					myFT.$("#btnGaleria").off("mouseout",onBtnGaleriaOut);
+					myFT.$("#btnSinopsis").off("mouseover",onBtnSinopsisOver);
+					myFT.$("#btnSinopsis").off("mouseout",onBtnSinopsisOut);
+
+					myFT.$("#btnVideo").off("click",onBtnVideoClick); 	
+					myFT.$("#btnGaleria").off("click",onBtnGaleriaClick);
+					myFT.$("#btnSinopsis").off("click",onBtnSinopsisClick);
+			}
+
+			function bindMenuListeners(st){
+				if(st=="video"){
+					myFT.$("#btnVideo").on("mouseover",onBtnVideoOver);
+					myFT.$("#btnVideo").on("mouseout",onBtnVideoOut);
+					myFT.$("#btnVideo").on("click",onBtnVideoClick); 
+				}else if(st=="galeria"){
+					myFT.$("#btnGaleria").on("mouseover",onBtnGaleriaOver);
+					myFT.$("#btnGaleria").on("mouseout",onBtnGaleriaOut);
+					myFT.$("#btnGaleria").on("click",onBtnGaleriaClick);
+				}else{
+					myFT.$("#btnSinopsis").on("mouseover",onBtnSinopsisOver);
+					myFT.$("#btnSinopsis").on("mouseout",onBtnSinopsisOut);
+					myFT.$("#btnSinopsis").on("click",onBtnSinopsisClick);
+				}	
+			}
+
+			function goToSection(st){
+				if(st == "video"){
+					myFT.$("#vidHolderExpanded").css({
+						"display":"block",
+						"z-index":"61"
+					});
+					myFT.$("#galleryHolder").css("z-index","60");
+					myFT.$("#sinopsisHolder").css("z-index","60");
+					TweenMax.to(vidHolderExpanded, 1, {alpha:1,ease: Power4.easeOut});
+					TweenMax.to(controlsHolderExpanded, 1, {alpha:1,ease: Power4.easeOut});
+					TweenMax.to(galleryHolder, 1, {alpha:0,ease: Power4.easeOut});
+					TweenMax.to(sinopsisHolder, 1, {alpha:0,ease: Power4.easeOut});
+					expandedVid.play();
+				}else if(st == "galeria"){
+					myFT.$("#galleryHolder").css({
+						"display":"block",
+						"z-index":"61"
+					});
+					myFT.$("#vidHolderExpanded").css("z-index","60");
+					myFT.$("#sinopsisHolder").css("z-index","60");
+					TweenMax.to(vidHolderExpanded, 1, {alpha:0,ease: Power4.easeOut});
+					TweenMax.to(controlsHolderExpanded, 1, {alpha:0,ease: Power4.easeOut});
+					TweenMax.to(galleryHolder, 1, {alpha:1,ease: Power4.easeOut});
+					TweenMax.to(sinopsisHolder, 1, {alpha:0,ease: Power4.easeOut});
+					expandedVid.pause();
+					if(!galeriaLoaded){
+						var richload = new FTRichloadElement();
+						richload.name = 'richload1';
+						myFT.$('#galleryHolder').append(richload);
+						galeriaLoaded = true;
+					}
+				}else if(st == "sinopsis"){
+					myFT.$("#sinopsisHolder").css({
+						"display":"block",
+						"z-index":"61"
+					});
+					myFT.$("#vidHolderExpanded").css("z-index","60");
+					myFT.$("#galleryHolder").css("z-index","60");
+					TweenMax.to(vidHolderExpanded, 1, {alpha:0,ease: Power4.easeOut});
+					TweenMax.to(controlsHolderExpanded, 1, {alpha:0,ease: Power4.easeOut});
+					TweenMax.to(galleryHolder, 1, {alpha:0,ease: Power4.easeOut});
+					TweenMax.to(sinopsisHolder, 1, {alpha:1,ease: Power4.easeOut});
+					expandedVid.pause();
+				}
+			}
+
+			function initVideo(){
+				if(isExpanded){
+					expandedVid.restart();
+				}
+			}
+
+			function restoreAnis(){
+				TweenMax.to(expandedHolder, 0, {alpha:0});
+				TweenLite.to(bgExpanded, 0, {alpha:0});
+				TweenLite.to(vidHolderExpanded, 0, {scaleX:1, scaleY:1, alpha:0});
+				TweenLite.to(controlsHolderExpanded, 0, {scaleX:1, scaleY:1, alpha:0});
+
+				TweenLite.to(TTExpanded, 0, {y:0, alpha:0});
+				TweenLite.to(releaseDate, 0, {y:0, alpha:0});
+				TweenLite.to(mono, 0, {y:0,alpha:0});
+				TweenLite.to(kubo, 0, {y:0,alpha:0});
+				TweenLite.to(cuernos, 0, {y:0,alpha:0});
+				
+	            TweenLite.to(btnVideo, 0, {y:0, alpha:0});
+	            TweenLite.to(btnSinopsis, 0, {y:0, alpha:0});
+				TweenLite.to(btnGaleria, 0, {y:0, alpha:0});
+				TweenLite.to(btnEntradas, 0, {y:0, alpha:0});
+				TweenLite.to(btnDemuestra, 0, {y:0, alpha:0});
+
+				TweenLite.to(fbBtn, 0, {y:0, alpha:0});
+				TweenLite.to(twBtn, 0, {y:0, alpha:0});
+				TweenLite.to(inBtn, 0, {y:0, alpha:0});
+				TweenLite.to(ytBtn, 0, {y:0, alpha:0});
+
+				TweenMax.killTweensOf(expanded);
+				TweenMax.killTweensOf(dimmer);
+
+				TweenMax.killTweensOf(expandedHolder);
+				TweenMax.killTweensOf(bgExpanded);
+				TweenMax.killTweensOf(vidHolderExpanded);
+				TweenMax.killTweensOf(controlsHolderExpanded);
+
+				TweenMax.killTweensOf(TTExpanded);
+				TweenMax.killTweensOf(releaseDate);
+				TweenMax.killTweensOf(mono);
+				TweenMax.killTweensOf(kubo);
+				TweenMax.killTweensOf(cuernos);
+
+				TweenMax.killTweensOf(btnVideo);
+				TweenMax.killTweensOf(btnSinopsis);
+				TweenMax.killTweensOf(btnGaleria);
+				TweenMax.killTweensOf(btnEntradas);
+				TweenMax.killTweensOf(btnDemuestra);
+
+				TweenMax.killTweensOf(fbBtn);
+				TweenMax.killTweensOf(twBtn);
+				TweenMax.killTweensOf(inBtn);
+				TweenMax.killTweensOf(ytBtn);
+			}
+
+			function init(){
+				scaleC2Action();
+				aniInit();
+			}
+
+			function aniInit(){
+				TweenLite.to(vidNE, 0, {alpha:1,y:0});
+				TweenLite.to(TTNE, 0, {alpha:1,y:0});
+				TweenLite.to(releaseDateNE, 0, {alpha:1,y:0});
+				TweenLite.to(copy1NE, 0, {alpha:1,y:0});
+				TweenLite.to(copy2NE, 0, {alpha:1,y:0});
+				TweenLite.to(copy3NE, 0, {alpha:1,y:0});
+
+				TweenLite.from(copy1NE, 1, {delay:.8, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(copy2NE, 1, {delay:.6, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(copy3NE, 1, {delay:.5, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(TTNE, 1, {delay:.3, y:-100, alpha:0,ease: Power4.easeOut});
+				TweenLite.from(releaseDateNE, 1, {delay:.9, y:+100, alpha:0, ease: Power4.easeOut});
+
+				TweenLite.to(vidHolderNonExpanded, 0, {alpha:1});
+				TweenLite.to(c2action, 0, {alpha:1});
+
+				TweenLite.from(vidHolderNonExpanded, 1, {delay:1.1, y:-50, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(c2action, 1, {delay:1, y:-50, alpha:0, ease: Power4.easeOut, onComplete:function(){
+					myFT.$("#overVideo").on("mouseover",overVideoMouseOver);
+					myFT.$("#overVideo").on("mouseout",overVideoMouseOut);
+					myFT.$("#overVideo").on("click",overVideoClick);
+				}});
+			}
+			
+			function scaleC2Action(){
+				TweenLite.to(c2action, .5, {scaleX:1, scaleY:1, onComplete:restoreC2Action});
+			}
+
+			function restoreC2Action(){
+				TweenLite.to(c2action, .5, {scaleX:.85, scaleY:.85, onComplete:scaleC2Action});
+			}
+
+			function overVideoMouseOver(e){
+				TweenLite.to(c2action, .5, {alpha:0});
+				TweenLite.to(overlayVidNonExpanded, .5, {alpha:.5});
+				TweenLite.to(countDown, .5, {alpha:1});
+				TweenLite.to(progressBarr, 2.5, {width:115, onComplete:expand});
+				startCount();
+			}
+
+			function overVideoMouseOut(e){
+				TweenLite.to(c2action, .5, {alpha:1});	
+				TweenLite.to(overlayVidNonExpanded, .5, {alpha:0});
+				TweenLite.to(countDown, .5, {alpha:0});
+				TweenLite.to(progressBarr, 0, {width:0});
+				restoreCount();
+			}
+
+			function startCount(){
+				countVar=setInterval(function(){
+					if(seconds > 0){
+						seconds=seconds-1;
+
+						document.getElementById("count").innerHTML=seconds;
+					}else{
+						clearInterval(countVar);
+					}
+				},833);
+			}
+
+			function restoreCount(){
+				seconds=3;
+				document.getElementById("count").innerHTML=seconds;
+				clearInterval(countVar);
+			}
+
+			function overVideoClick(e){
+				expand();
+				expandedVid.play();
+				expandedVid.pause();
+			}
+            
+            myFT.applyClickTag(ctBtnExpanded,1);
+            myFT.applyClickTag(ctBtn,1);
+            myFT.applyButton(closeBtn, contract);
+            
+		</script>
+	
+
+</body></html>

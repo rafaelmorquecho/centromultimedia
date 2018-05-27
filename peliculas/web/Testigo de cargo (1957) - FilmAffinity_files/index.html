@@ -1,0 +1,592 @@
+
+<!-- saved from url=(0056)https://secure.flashtalking.com/62263/1490806/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style></style>
+		<style>
+			body{
+				margin:0;
+				font-size:1em;
+				font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			}
+			#unexpanded{
+				width:980px;
+				height:200px;
+				position: absolute;
+				z-index: 1;
+				overflow: hidden;
+				
+			}
+			.expanded{
+				position: fixed;
+				width:100%;
+				height:100%;
+				position:absolute;
+				text-align: center;
+				vertical-align: middle;
+				z-index: 10;
+				opacity: 0;
+				display: none;
+			}
+			#bgExpanded{
+				position: relative;
+				margin: auto auto auto auto;
+				width: 980px;
+				height: 600px;
+				background-image: url(images/bgExpanded.jpg);
+				background-position: bottom right; 
+				background-repeat: no-repeat;
+				background-color: black;
+				z-index: 2;
+				top: 50%;
+  				-webkit-transform: translateY(-50%);
+ 				-ms-transform: translateY(-50%);
+  				transform: translateY(-50%);
+                position: absolute;
+                left:0;
+                right:0;
+                margin-left:auto;
+                margin-right:auto;
+                overflow: hidden;
+                -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+				-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+				box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+			}
+			#dimmer{
+				position: fixed;
+				top:0px;
+				left:0px;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,.6);
+				z-index: 1;
+			}
+			#ctBtn{
+				position: absolute;
+				width: 980px;
+				height: 200px;
+				z-index: 5;
+			}
+            #ctBtnExpanded{
+				position: absolute;
+				width: 980px;
+				height: 600px;
+				z-index: 4;
+			}
+			#closeBtn{
+				width: 39px;
+			    height: 39px;
+			    background-image: url(images/closeBtn.png);
+			    position: absolute;
+			    z-index: 10;
+			    right: 10px;
+			    top: 10px;
+			}
+			#containerC2action{
+				position: absolute;
+				width: 327px;
+			    height: 184px;
+			    top: 8px;
+    			right: 52px;
+				z-index: 3;
+				opacity: 0;
+			}
+			#c2action{
+				position: relative;
+				margin: 75px auto;
+				width: 112px;
+				height: 34px;
+				background-image: url(images/c2action.png);
+			}
+			#overVideo{
+				position: absolute;
+				width: 327px;
+			    height: 184px;
+			    top: 8px;
+    			right: 52px;
+				z-index: 6;
+				cursor: pointer;
+			}
+			#countDown{
+				position: absolute;
+				width: 327px;
+			    height: 184px;
+			    top: 8px;
+    			right: 52px;
+				z-index: 4;
+				opacity: 0;
+			}
+			#desplegandoTxt{
+				position: absolute;
+			    left: 106px;
+    			top: 61px;
+			    width: 112px;
+			    height: 8px;
+			    text-align: center;
+			    color: white;
+			    font-size: 10px;
+			}
+			#count{
+				position: absolute;
+				left: 62px;
+    			top: 110px;
+				width: 200px;
+				text-align: center;
+				height: 35px;
+				color: white;
+				font-size: 25px;
+			}
+			#progressBarr{
+				position: absolute;
+				margin: 1px 1px 0px 1px;
+				width: 0px;
+				height: 33px;
+				background-color: #009de3;
+			}
+			#progressBarrBg{
+				position: relative;
+			    margin: 74px auto;
+			    width: 105px;
+			    height: 35px;
+			    background-color: rgba(255,255,255,.7);
+			}
+			#overlayVidNonExpanded{
+				position: absolute;
+				width: 327px;
+			    height: 184px;
+			    top: 8px;
+    			right: 52px;
+				z-index: 3;
+				background-color: black;
+				opacity: 0;
+			}
+			#vidHolderNonExpanded{
+				position: absolute;
+			    width: 327px;
+			    height: 184px;
+			    top: 8px;
+    			right: 52px;
+			    z-index: 2;
+			    background-color: black;
+			    opacity: 0;
+			}
+			#txt1NE{
+				width: 219px;
+			    height: 36px;
+			    position: absolute;
+			    right: 556px;
+    			top: 25px;
+    			background-size: 100% 100%;
+			    background-image: url(images/txt1.png);
+			    opacity: 0;
+			}
+			#txt2NE{
+				width: 479px;
+			    height: 41px;
+			    position: absolute;
+			    top: 74px;
+    			left: 74px;
+			    z-index: 3;
+			    background-image: url(images/txt2.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#txt3NE{
+				width: 508px;
+			    height: 16px;
+			    position: absolute;
+			    top: 141px;
+    			left: 44px;
+			    z-index: 3;
+			    background-image: url(images/txt3NE.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#btnNE{
+				width: 210px;
+			    height: 62px;
+			    position: absolute;
+			    top: 132px;
+    			left: 206px;
+			    z-index: 3;
+			    background-image: url(images/btn.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#vidHolderExpanded{
+			    position: absolute;
+				width: 515px;
+			    height: 290px;
+			    top: 175px;
+    			left: 350px;
+				background-color: black;
+				z-index: 40;
+				opacity: 0;
+			}
+			#logoE {
+				position: absolute;
+			   	width: 109px;
+			    height: 129px;
+			    left: 0px;
+    			top: 0px;
+			    background-image: url(images/logoBBVA.png);
+			    opacity: 0;
+			}
+			#txt1E {
+				position: absolute;
+			   	width: 265px;
+			    height: 43px;
+			    right: 240px;
+    			top: 16px;
+			    background-image: url(images/txt1.png);
+			    opacity: 0;
+			}
+			#txt2E{
+				width: 500px;
+			    height: 39px;
+			    position: absolute;
+			    top: 67px;
+    			left: 364px;
+			    z-index: 3;
+			    background-image: url(images/txt2.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#txt3E{
+				width: 291px;
+			    height: 20px;
+			    position: absolute;
+			    top: 142px;
+    			left: 454px;
+			    z-index: 3;
+			    background-image: url(images/txt3E.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#txt4E{
+				width: 359px;
+			    height: 18px;
+			    position: absolute;
+			    top: 565px;
+   				left: 427px;
+			    z-index: 3;
+			    background-image: url(images/txt4.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#separadorE{
+				width: 45px;
+			    height: 2px;
+			    position: absolute;
+			    top: 121px;
+    			left: 586px;
+   				z-index: 3;
+   				opacity: 1;
+   				background-color: white;
+   				opacity: 0;
+			}
+			#btnE{
+				width: 210px;
+			    height: 62px;
+			    position: absolute;
+			    top: 487px;
+    			left: 502px;
+			    z-index: 3;
+			    background-image: url(images/btn.png);
+			    background-size: 100% 100%;
+			    opacity: 0;
+			}
+			#controlsHolder{
+				position: absolute;
+			    width: 521px;
+			    height: 30px;
+			    top: 440px;
+			    left: 345px;
+			    z-index: 45;
+			    opacity: 0;
+			}
+			
+			ft-video-controls {
+				background-color: rgba(2,79,151,.6);
+				border-radius: 0px;
+				font-size: 14px;
+				color: white;
+				bottom: 5px;
+				width: 99%;
+				left: 5px;
+			}
+
+			.ft-video-progress-bar{
+				border: none;
+				height: 4px;
+				border-radius: 0px;
+			}
+
+			.ft-video-progress-bar::after {
+			    box-shadow: none;
+			    border-radius: 0px;
+			}
+			.ft-time-display{
+				display: none;
+			}
+
+			ft-video::shadow video{
+				width: 100%!important;
+			    height: 100%!important;
+
+			}
+
+			ft-video video, ft-video iframe, ft-video canvas {
+			   width: 100%!important;
+			    height: 100%!important;
+			}
+
+			ft-video {
+				width: 100%!important;
+			    height: 100%!important;
+			}
+		</style>
+	</head>
+	<body onload="init();">
+		<!-- content -->
+		<div id="container">
+			<div id="unexpanded">
+				<div id="overVideo"></div>
+					<div id="containerC2action" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+						<div id="c2action" style="transform: matrix(0.997619, 0, 0, 0.997619, 0, 0);"></div>
+					</div>
+					<div id="overlayVidNonExpanded"></div>
+					<div id="vidHolderNonExpanded" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+						<ft-video id="nonExpandedVid" name="video1" autoplay="" loop="" muted=""></ft-video>
+					</div>
+					<div id="countDown">
+						<div id="desplegandoTxt">DESPLEGANDO EN</div>
+						<div id="progressBarrBg">
+							<div id="progressBarr"></div>
+						</div>
+						<div id="count">3</div>
+					</div>		
+				<div id="txt1NE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="txt2NE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="btnNE" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<div id="ctBtn" style="cursor: pointer; background-image: url(&quot;about:blank&quot;);"></div>
+			</div>
+			<div class="expanded" id="expanded">
+				<div id="dimmer"></div>
+				<div id="bgExpanded">
+					<div id="closeBtn" style="cursor: pointer;"></div>
+						<div id="vidHolderExpanded">
+							<ft-video id="expandedVid" name="video2" clicktag=""></ft-video>
+						</div>
+						<div id="controlsHolder">
+							<ft-video-controls for="expandedVid" class="" style=""><span class="ft-icon-play">D</span><span class="ft-video-progress-container">  <span class="ft-video-progress-bar">    <span class="ft-video-buffer" style="width: 100%;"></span>    <span class="ft-video-progress" style="width: 0%;"></span>  </span></span><span class="ft-time-display">0:00</span><span class="ft-icon-volume">F</span><span class="ft-icon-fullscreen">B</span></ft-video-controls>
+						</div>
+					<div id="logoE"></div>
+					<div id="txt1E"></div>
+					<div id="txt2E"></div>
+					<div id="txt3E"></div>
+					<div id="btnE"></div>
+					<div id="txt4E"></div>
+					<div id="separadorE"></div>
+            		<div id="ctBtnExpanded" style="cursor: pointer; background-image: url(&quot;about:blank&quot;);"></div>
+				</div>
+			</div>
+		</div>
+		<!-- scripts -->
+		<script src="./html5API.js"></script>
+		<script src="./TweenMax.min.js"></script>
+		<script>
+			var isExpanded=false,
+			intervalo,
+			countVar,
+			seconds=3,
+			expand = function(){
+				isExpanded=true;
+				myFT.$("#unexpanded").css('opacity','0');
+				myFT.$("#expanded").css('display','block');
+				
+				myFT.expand();
+				TweenLite.to(expanded, 1, {alpha:1});
+				expandedAni();
+			},
+			contract = function(e){
+				isExpanded=false;
+				myFT.$("#unexpanded").css('opacity','1');
+				myFT.$("#expanded").css('display','none');
+				
+                myFT.contract();
+                
+                expandedVid.stop();
+                restoreTweens();
+                myFT.$("#c2action").css("opacity",1);
+				myFT.$("#overlayVidNonExpanded").css("opacity",0);
+				myFT.$("#countDown").css("opacity",0);
+				myFT.$("#progressBarr").css("width",0);
+				myFT.$("#overVideo").css("display","none");
+				setTimeout(function(){
+					myFT.$("#overVideo").css("display","block");
+				},500)
+			};
+			
+			myFT.$("#overVideo").on("mouseover",overVideoMouseOver);
+			myFT.$("#overVideo").on("mouseout",overVideoMouseOut);
+			myFT.$("#overVideo").on("click",overVideoClick);
+
+			function restoreTweens(){
+				TweenLite.to(c2action, 0, {alpha:1});	
+				TweenLite.to(overlayVidNonExpanded, 0, {alpha:0});
+				TweenLite.to(countDown, 0, {alpha:0});
+				TweenLite.to(progressBarr, 0, {width:0});
+				restoreCount();
+
+				TweenLite.to(bgExpanded, 0, {alpha:0,scaleX:1,scaleY:1});
+				TweenLite.to(vidHolderExpanded, 0, {alpha:0,scaleX:1,scaleY:1});
+				TweenLite.to(logoE, 0, {alpha:0,y:0});
+				TweenLite.to(txt1E, 0, {alpha:0,y:0});
+				TweenLite.to(txt2E, 0, {alpha:0,y:0});
+				TweenLite.to(txt3E, 0, {alpha:0,y:0});
+				TweenLite.to(txt4E, 0, {alpha:0,y:0});
+				TweenLite.to(btnE, 0, {alpha:0,y:0});
+				TweenLite.to(separadorE, 0, {alpha:0,y:0});
+				TweenLite.to(controlsHolder, 0, {alpha:1});
+
+				TweenLite.killTweensOf(expanded);
+				TweenLite.killTweensOf(bgExpanded);
+				TweenLite.killTweensOf(logoE);
+				TweenLite.killTweensOf(txt1E);
+				TweenLite.killTweensOf(txt2E);
+				TweenLite.killTweensOf(txt3E);
+				TweenLite.killTweensOf(txt4E);
+				TweenLite.killTweensOf(vidHolderExpanded);
+				TweenLite.killTweensOf(controlsHolder);
+				TweenLite.killTweensOf(btnE);
+				TweenLite.killTweensOf(separadorE);
+			}
+
+			function initVideo(){
+				if(isExpanded){
+					expandedVid.play();
+					checkIfVideoEnd();
+				}
+			}
+
+			function checkIfVideoEnd(){
+				if(isExpanded){
+					intervalo = setInterval(function(){
+						if(expandedVid.currentTime>19){
+							myFT.tracker("trackingview");
+							myFT.send("SMARTVIEW");
+							clearInterval(intervalo);
+						}
+					},500);
+				}
+			}
+
+			function init(){
+				TweenLite.to(vidHolderNonExpanded, 0, {alpha:1,scaleX:1,scaleY:1});
+				TweenLite.to(containerC2action, 0, {alpha:1,scaleX:1,scaleY:1});
+				TweenLite.to(txt1NE, 0, {alpha:1,y:0});
+				TweenLite.to(txt2NE, 0, {alpha:1,y:0});
+				// TweenLite.to(txt3NE, 0, {alpha:1,y:0});
+				TweenLite.to(btnNE, 0, {alpha:1,scaleX:1,scaleY:1});
+				
+				TweenLite.from(vidHolderNonExpanded, 1, {delay:.3,alpha:0,scaleX:0,scaleY:0,ease: Power4.easeOut});
+				TweenLite.from(containerC2action, 1, {delay:.3,alpha:0,scaleX:0,scaleY:0,ease: Power4.easeOut,onComplete:scaleC2Action});
+				TweenLite.from(txt1NE, 1, {delay:.6,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(txt2NE, 1, {delay:.9,alpha:0,y:-50,ease: Power4.easeOut});
+				// TweenLite.from(txt3NE, 1, {delay:1.2,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(btnNE, 1, {delay:1.5,alpha:0,scaleX:0,scaleY:0,ease: Power4.easeOut});
+			}
+
+			function expandedAni(){
+				TweenLite.to(bgExpanded, 0, {alpha:1,scaleX:1,scaleY:1});
+				TweenLite.to(logoE, 0, {alpha:1,y:0});
+				TweenLite.to(txt1E, 0, {alpha:1,y:0});
+				TweenLite.to(txt2E, 0, {alpha:1,y:0});
+				TweenLite.to(txt3E, 0, {alpha:1,y:0});
+				TweenLite.to(txt4E, 0, {alpha:1,y:0});
+				TweenLite.to(btnE, 0, {alpha:1,y:0});
+				TweenLite.to(separadorE, 0, {alpha:1,y:0});
+				TweenLite.to(vidHolderExpanded, 0, {alpha:1,scaleX:1,scaleY:1});
+				TweenLite.to(controlsHolder, 0, {alpha:1});
+
+				TweenLite.from(bgExpanded, 2.5, {delay:.2,alpha:0,scaleX:.4,scaleY:.4,ease: Power4.easeOut});
+				TweenLite.from(logoE, 1, {delay:.3,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(txt1E, 1, {delay:.6,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(txt2E, 1, {delay:.9,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(separadorE, 1, {delay:1.2,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(txt3E, 1, {delay:1.5,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(vidHolderExpanded, 1, {delay:1.8, alpha:0, scaleX:.5,scaleY:.5,ease: Power4.easeOut, onComplete:initVideo});
+				TweenLite.from(controlsHolder, 1, {delay:2.5, alpha:0,ease: Power4.easeOut});
+				TweenLite.from(btnE, 1, {delay:2.1,alpha:0,y:-50,ease: Power4.easeOut});
+				TweenLite.from(txt4E, 1, {delay:2.4,alpha:0,y:-50,ease: Power4.easeOut});
+			}
+			
+			function scaleC2Action(){
+				TweenLite.to(c2action, .5, {scaleX:1, scaleY:1, onComplete:restoreC2Action});
+			}
+
+			function restoreC2Action(){
+				TweenLite.to(c2action, .5, {scaleX:.85, scaleY:.85, onComplete:scaleC2Action});
+			}
+
+			function overVideoMouseOver(e){
+				TweenLite.to(c2action, .5, {alpha:0});
+				TweenLite.to(overlayVidNonExpanded, .5, {alpha:.5});
+				TweenLite.to(countDown, .5, {alpha:1});
+				TweenLite.to(progressBarr, 2.5, {width:103, onComplete:function(){
+						TweenLite.killTweensOf(progressBarr);
+						myFT.$("#c2action").css("opacity",1);
+						myFT.$("#overlayVidNonExpanded").css("opacity",0);
+						myFT.$("#countDown").css("opacity",0);
+						myFT.$("#progressBarr").css("width",0);
+						restoreCount();
+						if(!isExpanded){
+							expand();
+						}
+					}
+				});
+				startCount();
+			}
+
+			function overVideoMouseOut(e){
+				TweenLite.killTweensOf(progressBarr);
+				TweenLite.to(overlayVidNonExpanded, 0, {alpha:0});
+				TweenLite.to(countDown, 0, {alpha:0});
+				TweenLite.to(c2action, 0, {alpha:1});
+				TweenLite.to(progressBarr, 0, {width:0});
+				restoreCount();
+			}
+
+			function startCount(){
+				countVar=setInterval(function(){
+					if(seconds > 0){
+						seconds=seconds-1;
+						count.innerHTML=seconds;
+					}else{
+						clearInterval(countVar);
+					}
+				},833);
+			}
+
+			function restoreCount(){
+				seconds=3;
+				count.innerHTML=seconds;
+				clearInterval(countVar);
+			}
+
+			function overVideoClick(e){
+				// O CAMBIAR A myFT.clickTag(1); para obtener clicks en caso de campañas con objetivo de click
+				if(!isExpanded){
+					expand();
+				}
+			}
+            
+            myFT.applyClickTag(ctBtnExpanded);
+			myFT.applyClickTag(ctBtn);
+
+            myFT.applyButton(closeBtn, function(){contract()});
+            
+		</script>
+	
+
+</body></html>

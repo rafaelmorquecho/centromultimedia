@@ -1,0 +1,80 @@
+.movie-card .mc-title a{ text-decoration: none; color: #555; font-size: 16px;}
+.movie-card .mc-title a:hover{ text-decoration: underline;}
+.movie-card .mc-director{ height: 20px; line-height: 20px; overflow-y: hidden; padding-bottom: 2px;}
+.movie-card .mc-director a{ text-decoration: none; color: #326E9C; font-size: 14px; line-height: 20px}
+.movie-card .mc-director a:hover{ text-decoration: underline}
+.movie-card .mc-cast a{ text-decoration: none; color: #666666; font-size: 14px; line-height: 15px; white-space: nowrap;}
+.movie-card .mc-cast a:hover{ text-decoration: underline}
+.movie-card .mc-action{ background-color: #F5F5F5; border: 1px solid #DDDDDD; border-radius: 3px; cursor: pointer; text-align: center;}
+.movie-card .mc-action:hover{ background-color: #DDDDDD !important; color: #666666}
+.movie-card .mc-action a i{ color: #666666; font-size: 14px;}
+.movie-card .mc-action:hover a i{ color: #666666}
+
+
+.movie-card-0{ position:relative; }
+.movie-card-0 img{ vertical-align: text-bottom;}
+.movie-card-0 .mc-poster{ float: left; vertical-align: top; }
+.movie-card-0 .mc-poster img{ box-shadow: 2px 3px 4px #BBBBBB}
+.movie-card-0 .mc-info-container{ margin-left: 120px;}
+.movie-card-0 .mc-info-container > div{ margin-bottom: 7px; }
+.movie-card .mc-actions{ float: right;}
+.movie-card .mc-action{ display: inline-block; margin-left: 5px;}
+.movie-card .mc-action:hover{ background-color: #FFFFFF}
+
+
+.movie-card-1{ position:relative;}
+.movie-card-1 img{ vertical-align: text-bottom;}
+.movie-card-1 .mc-title{ margin-bottom: 5px;}
+.movie-card-1 .mc-poster{ float: left; width: 110px; vertical-align: top;}
+.movie-card-1 .mc-poster img{ box-shadow: 2px 3px 4px #BBBBBB}
+.movie-card-1 .mc-info-container{ vertical-align: top; margin-left: 120px; }
+.movie-card-1 .mc-info-container > div{ margin-bottom: 7px;}
+.movie-card-1 .mc-info-container .mc-cast{ overflow-y: hidden;}
+.movie-card-1 .mc-info-container .mc-cast a{ display: inline-block; margin-bottom: 3px;}
+.movie-card-1 .clearfix {clear: left !important; }
+
+
+.movie-card-3 img{ vertical-align: text-bottom;}
+.movie-card-3 .mc-info-container > div{ padding:1px 0px;}
+
+.movie-card-7{ position:relative;}
+.movie-card-7 .mc-poster{ position: absolute}
+.movie-card-7 img{ vertical-align: text-bottom;}
+.movie-card-7 .mc-info-container{ margin-left: 75px; min-height: 95px}
+.movie-card-7 .mc-info-container > div{ padding:1px 0px;}
+
+.movie-card-13{ color: #666; margin: 0px; padding:0px; position: relative;}
+.movie-card-13 .mc-image img{ border: 1px solid #b0b0b0; height: 234px; width:155px; }
+.movie-card-13 .fringe{text-align: center; font-size: 85%; color:#ffffff; position: absolute; bottom:15px; left:1px; right:1px; height: 50px;  background: #447CAD; filter: Alpha(Opacity=90); -moz-opacity: .90; opacity: .90; padding: 4px 0px 4px 0px;}
+.movie-card-13 .mtitle{font-size: 123.1%; height:36px; margin-bottom: 2px; overflow-y: hidden;}
+.movie-card-13 a{text-decoration: none;}
+
+.movie-card-21{ position:relative;}
+.movie-card-21 h3{ height: 24px; overflow: hidden; text-overflow: ellipsis; color: #3c6e99; margin: 0 0 8px 0}
+.movie-card-21 h3 a{ font-weight:bold; font-size:18px; color:#3c6e99;}
+.movie-card-21 img{ vertical-align: baseline;}
+.movie-card-21 .mc-poster{ position: absolute; margin-top: 3px;}
+.movie-card-21 .mc-poster img{ border: 0; box-shadow: 0 1px 5px rgba(0,0,0,0.5);}
+.movie-card-21 .mc-info-container{ margin-left: 110px; min-height: 180px; margin-bottom: 20px;}
+.movie-card-21 .mc-info-container > div{ padding:1px 0px; margin-bottom: 3px;}
+.movie-card-21 .mc-year-country { font-size: 13px;color: #666666;}
+.movie-card-21 .mc-year-country img{ vertical-align: text-bottom;}
+.movie-card-21 .mc-director{ height: 20px; overflow: hidden; }
+.movie-card-21 .mc-cast a{ text-decoration: none; color: #666666; font-size: 14px; line-height: 17px;}
+.movie-card-21 .mc-cast{ height: 34px; overflow: hidden;}
+.movie-card-21 .mc-sinop{ margin-top: 6px; height: 58px; line-height: 14px !important; overflow-y: hidden; text-overflow: ellipsis;}
+.movie-card-21 .mc-sinop a{ color: #333333; font-style: italic; font-size: 12px; height: 58px; line-height: 14px !important; overflow-y: hidden; text-overflow: ellipsis;}
+
+.movie-card .mc-actions { float: right; }
+.movie-card-21 .mc-action{ background-color: #f5f5f5; border: 1px solid #dddddd; border-radius: 3px; cursor: pointer;}
+.movie-card-21 .mc-action:hover{ background-color:#ffffff; }
+.movie-card-21 .mc-action .addl{ color: #777777 !important; float: none; border: 0; vertical-align: middle;}
+.movie-card-21 .mc-action .addl i{ font-size: 14px; line-height: 14px;}
+
+.movie-card-ac{ clear: both; height: 52px; padding: 0px;}
+.movie-card-ac img {float:left; width: 36px; height: 52px}
+.movie-card-ac .title {margin-left: 40px; font-weight: bold; color: #666; line-height: 18px;}
+.movie-card-ac .cast {margin-left: 40px; color: #888; font-style: italic; font-size: 11px; line-height: 15px;}
+
+.movie-card .mr-rating .avgrat-box{ font-size: 16px; background: #447CAD; text-align: center; color: #FFFFFF; letter-spacing: -1px; width: 2em; height: 1.6em; line-height: 1.6em; margin: 0 auto; border-radius: .3em; box-sizing: border-box; border: 1px solid #447CAD; font-weight: normal; display: inline-block; margin-right: 5px;}
+.movie-card .mr-rating .ratcount-box{ letter-spacing: -.5px; white-space: nowrap; font-size: 14px; text-align: center; color: #888888; padding: 1px 1px; display: inline-block;}

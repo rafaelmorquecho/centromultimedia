@@ -5,10 +5,14 @@
         <group>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/datos-centromultimedia.sql</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/conexion/conexion.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/modelos/class.Usuario.php</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/pelicula_vista.php</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/login_vista.php</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/index.php</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/centromultimedia.sql</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/modelos/class.Genero.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/scraper/scraper_1.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/scraper/conectar.php</file>
         </group>
     </open-files>
 </project-private>

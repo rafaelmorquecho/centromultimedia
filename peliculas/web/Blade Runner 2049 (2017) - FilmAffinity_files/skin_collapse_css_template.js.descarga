@@ -1,0 +1,678 @@
+	function asyncInject_smartclip_skin_css(array, fn, delay) {
+		var i = 0;
+		window.setTimeout(function iter() {
+			if (i === array.length) {
+				return;
+			}
+			fn.call(array, array[i], i++);
+			window.setTimeout(iter, delay);
+		}, 0);
+	}
+
+	require_smartclip_skin_css = function(paths, callback) {
+
+		// Check if the path param is of the required type.
+		if (!paths instanceof Array || !paths instanceof String) {
+			console.log('Please check the useage');
+			return;
+		}
+
+		// If paths param is a single param, convert it to an Array.
+		paths = typeof paths === 'string' ? paths.split() : paths
+		var js, css;
+
+		// For every path in paths add the required to the head.
+		asyncInject_smartclip_skin_css(paths, function(path) {
+
+	var doc = document;
+	if (window.self !== window.top) {
+		doc = parent.document;
+	}
+
+
+			var type = path.split('.').pop();
+			switch(type) {
+			case 'js':
+				js = doc.createElement('script');
+				js.src = path;
+				type = js;
+				break;
+			case 'css':
+				css = doc.createElement('link');
+				css.href = path;
+				css.rel = 'stylesheet';
+				type = css;
+				break;
+			default:
+				return;
+			}
+
+			if (callback)
+				type.addEventListener('load', function(e) {
+					callback(e);
+				}, false);
+
+			doc.head.appendChild(type);
+		}, 0);
+	}
+	if (document.location.href.indexOf("femenino.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/femeninoinfo_style_css_skin.css');
+	}
+	else if (document.location.href.indexOf("hogarmania") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/hogarmania_style_css_skin_v4.css');
+	}
+	else if (document.location.href.indexOf("noticias.juridicas") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/noticiasjuridicas_style_css_skin_v2.css');
+	}
+	else if (document.location.href.indexOf("invertia.com/es/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_invertia_responsive.css');
+	}
+	else if (document.location.href.indexOf("invertia.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_invertia_responsive.css');
+	}	
+	else if (document.location.href.indexOf("thermorecetas.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("lasrecetascocina.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("nutridieta.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("mascorazon.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("manualidadeson.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("madreshoy.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("jardineriaon.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("decooracion.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("mycookrecetas.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v4.css');
+	}
+	else if (document.location.href.indexOf("bezzia.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_abint_v5.css');
+	}
+	else if (document.location.href.indexOf("canalcocina.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/canalcocina_style_css_skin.css');
+	}
+	else if (document.location.href.indexOf("decasa.tv") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/decasa_style_css_skin.css');
+	}
+	else if (document.location.href.indexOf("ocio.net") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/ocio_style_css_skin.css');
+	}
+	else if (document.location.href.indexOf("quemedico") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_css_quemedico.css');
+	}
+	else if (document.location.href.indexOf("latidoalatido.com/principal") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/latidoalatido_skin_css_v2.css');
+	}
+	else if (document.location.href.indexOf("latidoalatido.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/latidoalatido_skin_css.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/videos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/trucos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/ocio") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/noticias") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/juegos/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredjuegos.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/juegos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/e3") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/avances") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com/analisis") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonaredresto.css');
+	}
+	else if (document.location.href.indexOf("zonared.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_zonared.css');
+	}
+	else if (document.location.href.indexOf("pcactual") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pcactual.css');
+	}
+	else if (document.location.href.indexOf("autoscout24.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/autoscout24_skin_style_v4.css');
+	}
+	else if (document.location.href.indexOf("cotilleo.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_cotilleo_es_v9.css');
+	}
+	else if (document.location.href.indexOf("bekiamoda") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiamoda_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiabelleza") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiabelleza_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiapareja") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiapareja_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiapadres") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiapadres_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiamascotas") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiamascotas_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiasalud") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiasalud_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiacocina") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiasalud_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekianavidad") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiasalud_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekiahoroscopo") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiasalud_smartclip.css');
+	}
+	else if (document.location.href.indexOf("es.bekia.tv") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekiatv_smartclip.css');
+	}
+	else if (document.location.href.indexOf("bekia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_template_bekia_smartclip.css');
+	}
+	else if (document.location.href.indexOf("ciclismoafondo.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/ciclismoafondo_skin_style.css');
+	}
+	else if (document.location.href.indexOf("formulatv.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/formulatv_skin_style.css');
+	}
+	else if (document.location.href.indexOf("cinesa") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/cinesa_skin_style_v2.css');
+	}
+	else if (document.location.href.indexOf("diariodeavila") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("diariodeburgos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("diariopalentino") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("eldiadevalladolid") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("eldiasegovia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("eldiasoria") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("latribunadealbacete") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("latribunadeciudadreal") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("latribunadecuenca") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("latribunadetalavera") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("latribunadetoledo") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_promecal.css');
+	}
+	else if (document.location.href.indexOf("natv.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_navarratv.css');
+	}
+	else if (document.location.href.indexOf("cochesyconcesionarios") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_cyc.css');
+	}
+	else if (document.location.href.indexOf("fichajes.defensacentral") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_fichajesdefensacentral.css');
+	}
+	else if (document.location.href.indexOf("defensacentral") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_defensacentral.css');
+	}
+	else if (document.location.href.indexOf("elcorreoweb") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_elcorreoweb.css');
+	}
+	else if (document.location.href.indexOf("eltiempo24.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_eltiempo24.css');
+	}
+	else if (document.location.href.indexOf("filmaffinity") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_filmaffinity.css');
+	}
+	else if (document.location.href.indexOf("infolibre") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_infolibre_v4.css');
+	}
+	else if (document.location.href.indexOf("es.ccm.net") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_kioskea.css');
+	}
+	else if (document.location.href.indexOf("animados") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_animados.css');
+	}
+	else if (document.location.href.indexOf("ecartelera") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_ecartelera.css');
+	}
+	else if (document.location.href.indexOf("gadgetos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_gadgetos_v3.css');
+	}
+	else if (document.location.href.indexOf("solucionesong") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_solucionesong.css');
+	}
+	else if (document.location.href.indexOf("hacesfalta.org") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_hacesfalta.css');
+	}
+	else if (document.location.href.indexOf("doctuo") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_doctuo.css');
+	}
+	else if (document.location.href.indexOf("aldia.cat/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_aldia.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/portaltic/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_portaltic.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/gente/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/realeza/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/belleza/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/moda/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/cineymusica/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/tv/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/tendencias/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/videos/noticia") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_noticias.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/gente/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/realeza/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/belleza/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/moda/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/cineymusica/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/tv/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/tendencias/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance/videos/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance_homeseccion.css');
+	}
+	else if (document.location.href.indexOf("europapress.es/chance") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_chance.css');
+	}
+	else if (document.location.href.indexOf("europapress.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_europapress.css');
+	}
+	else if (document.location.href.indexOf("salir") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_salir.css');
+	}
+	else if (document.location.href.indexOf("culturaocio.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_culturaocio.css');
+	}
+	else if (document.location.href.indexOf("infosalus.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_infosalus.css');
+	}
+	else if (document.location.href.indexOf("losreplicantes.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_losreplicantes.css');
+	}
+	else if (document.location.href.indexOf("nvivo.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_nvivo.css');
+	}
+	else if (document.location.href.indexOf("womenshealth.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_womenshealth.css');
+	}
+	else if (document.location.href.indexOf("menshealth.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_menshealth.css');
+	}
+	else if (document.location.href.indexOf("runners.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_runners.css');
+	}
+	else if (document.location.href.indexOf("sportlife.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_sportlife.css');
+	}
+	else if (document.location.href.indexOf("ecuestre.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_ecuestre.css');
+	}
+	else if (document.location.href.indexOf("autopista.es/automercado") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_autopista_automercado.css');
+	}
+	else if (document.location.href.indexOf("autopista.es/galerias") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_autopista_galerias.css');
+	}
+	else if (document.location.href.indexOf("autopista.es/coches/comparador") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_autopista_comparador.css');
+	}
+	else if (document.location.href.indexOf("autopista.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_autopista.css');
+	}
+	else if (document.location.href.indexOf("triatlonweb.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_triatlonweb.css');
+	}
+	else if (document.location.href.indexOf("trailrun.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_trailrun.css');
+	}
+	else if (document.location.href.indexOf("golfdigest.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_golfdigest.css');
+	}
+	else if (document.location.href.indexOf("mountainbike.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_mountainbike.css');
+	}
+	else if (document.location.href.indexOf("revistaoxigeno.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_revistaoxigeno.css');
+	}
+	else if (document.location.href.indexOf("todotest.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_todotest.css');
+	}
+	else if (document.location.href.indexOf("semana.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_semana_skin.css');
+	}
+	else if (document.location.href.indexOf("eljueves") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_eljueves.css');
+	}
+	else if (document.location.href.indexOf("nationalgeographic") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_nationalgeographic.css');
+	}
+	else if (document.location.href.indexOf("clara.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_clara.css');
+	}	
+	else if (document.location.href.indexOf("merca2") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_merca2.css'); 
+	}
+	else if (document.location.href.indexOf("infosalus") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_infosalus.css');
+	}
+	else if (document.location.href.indexOf("stylelovely") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_stylelovely.css');
+	}
+	else if (document.location.href.indexOf("zeleb.es/n/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/zeleb_css_skin_seccion_n.css');
+	}
+	else if (document.location.href.indexOf("zeleb.es/style") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/zeleb_css_skin_seccion_style.css');
+	}
+	else if (document.location.href.indexOf("zeleb.es/tv") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/zeleb_css_skin_seccion_tv.css');
+	}
+	else if (document.location.href.indexOf("zeleb.es/sec/videos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/zeleb_css_skin_seccion_videos.css');
+	}		
+	else if (document.location.href.indexOf("zeleb.es/sec/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/zeleb_css_skin_seccion_sec.css');
+	}	
+	else if (document.location.href.indexOf("sdpnoticias") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_sdpnoticias.css');
+	}		
+	else if (document.location.href.indexOf("portal.beta.sdp.tw") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_sdpnoticias.css');
+	}	
+	else if (document.location.href.indexOf("publimetro.com.mx") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_publimetro.css');
+	}	
+	else if (document.location.href.indexOf("cocinarica.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("lacosarosa.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("descubreapple.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("doblemoda.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("elbloginfantil.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("faunatura.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("porconocer.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("telelocura.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("unomasenlafamilia.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_bdeb.css');
+	}
+	else if (document.location.href.indexOf("pre.multimedios.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/telediario/local") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/telediario/en-alerta") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/telediario/nacional") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/telediario/internacional") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/telediario/tras-los-famosos") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/telediario/tendencias") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/vivalavi") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/destardes") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/bailadisimo") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/snserio") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/volumen-4") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/especiales") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/es-show") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas_resto.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/programas/acabatelo") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_programas.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/deportes/futbol") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_deportes_futbol.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/deportes/mas-deportes") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_deportes_futbol.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/deportes/formula1") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_deportes_futbol.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/deportes/nfl") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_deportes_futbol.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/deportes/sultanes") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_deportes_futbol.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com/deportes") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios_deportes.css');
+	}
+	else if (document.location.href.indexOf("multimedios.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_pre_multimedios.css');
+	}
+	else if (document.location.href.indexOf("mtv.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_mtv.css');
+	}
+	else if (document.location.href.indexOf("milenio.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_milenio.css');
+	}
+	else if (document.location.href.indexOf("tomatazos.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_tomatazos.css');
+	}
+	else if (document.location.href.indexOf("metatube.com/en/videos/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_metatube_v2.css');
+	}
+	else if (document.location.href.indexOf("metatube.com/es/videos/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_metatube_v2.css');
+	}
+	else if (document.location.href.indexOf("metatube.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_metatube.css');
+	}
+	else if (document.location.href.indexOf("red17.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_red17.css');
+	}
+	else if (document.location.href.indexOf("elpais") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_elpais.css');
+	}
+	else if (document.location.href.indexOf("playgroundmag.net") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_playgroundmag.css');
+	}	
+	else if (document.location.href.indexOf("as.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_as.css');
+	}
+	else if (document.location.href.indexOf("martesdeespejo.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_martesdeespejo.css');
+	}	
+	else if (document.location.href.indexOf("eldesmarque") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_eldesmarque.css');
+	}
+	else if (document.location.href.indexOf("dev-arena-publica.pantheonsite.io") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_arena.css');
+	}		
+	else if (document.location.href.indexOf("arenapublica.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/style_skin_arena.css');
+	}
+	else if (document.location.href.indexOf("navarra.elespanol") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin-style-navarra-nautilus.css');
+	}		
+	else if (document.location.href.indexOf("revistaactual.com.mx") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_contenidoftp.css');
+	}
+	else if (document.location.href.indexOf("esto.com.mx/") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_noticia_esto.css');
+	}			
+	else if (document.location.href.indexOf("esto.com.mx") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_esto.css');
+	}		
+	else if (document.location.href.indexOf("90min.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_90min.css');
+	}	
+	else if (document.location.href.indexOf("elsoldetlaxcala.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_tlaxcala.css');
+	}	
+	else if (document.location.href.indexOf("elheraldodechihuahua.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_tlaxcala.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/competicion") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/estilo") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/marca") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/noticias") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/pruebas") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/supercoches") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com/tag") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor.css');
+	}
+	else if (document.location.href.indexOf("motor.atresmedia.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia_motor_hp.css');
+	}
+	else if (document.location.href.indexOf("atresmedia.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia.css');
+	}
+	else if (document.location.href.indexOf("antena3.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia.css');
+	}
+	else if (document.location.href.indexOf("atresplayer.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresplayer.css');
+	}
+	else if (document.location.href.indexOf("lasexta.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia.css');
+	}
+	else if (document.location.href.indexOf("ondacero.es") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_ondacero.css');
+	}
+	else if (document.location.href.indexOf("melodia-fm.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_melodia_fm.css');
+	}
+	else if (document.location.href.indexOf("tecnoxplora.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia.css');
+	}
+	else if (document.location.href.indexOf("cocinatis.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia.css');
+	}
+	else if (document.location.href.indexOf("correryfitness.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_atresmedia.css');
+	}
+	else if (document.location.href.indexOf("europafm.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_europafm.css');
+	}
+	else if (document.location.href.indexOf("elmueble.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_elmueble.css');
+	}
+	else if (document.location.href.indexOf("periodicoelgancho.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_elgancho.css');
+	}
+	else if (document.location.href.indexOf("climatempo.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_climatempo.css');
+	}
+	else if (document.location.href.indexOf("enbuenasmanos.com") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_enbuenasmanos.css');
+	}
+	else if (document.location.href.indexOf("tvjornal.ne10.uol.com.br") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_tvjornal.css');
+	}
+		else if (document.location.href.indexOf("radiojornal.ne10.uol.com.br") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_radiojornal.css');
+	}
+	else if (document.location.href.indexOf("jconline.ne10.uol.com.br") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_jconline.css');
+	}
+	else if (document.location.href.indexOf("ne10.uol.com.br") != -1) {
+		require_smartclip_skin_css('https://a482323.storage.oraclecloud.com/v1/Storage-a482323/cdn/richmedia/integraciones/skin/libs/skin_style_ne10.css');
+	}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://secure.flashtalking.com/63002/1493232/videowall_billboard.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<style></style><style>
+			
+			#container{
+				position: absolute;
+				width: 980px;
+				height: 200px;
+				cursor: pointer;
+				overflow: hidden;
+			}
+			
+			#cTag{
+				position: absolute;
+				z-index: 20;
+				top: 0px;
+				left: 0px;
+				width: 980px;
+				height: 200px;
+			}
+
+			#overVideo{
+				width: 330px;
+				height: 200px;
+				position: absolute;
+				top: 0px;
+				left: 630px;
+				z-index: 30;
+				cursor: pointer;
+			}
+			#countDown{
+				width: 303px;
+				height: 174px;
+				position: absolute;
+				top: 73px;
+    			left: 700px;
+				z-index: 4;
+				opacity: 0;
+			}
+			#desplegandoTxt{
+				position: absolute;
+				left: 27px;
+			    top: -12px;
+			    width: 95px;
+				height: 11px;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 10px;
+			}
+			#count{
+				position: absolute;
+				left: 52px;
+    			top: 8px;
+				width: 200px;
+				text-align: center;
+				height: 35px;
+				color: white;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 20px;
+			}
+			#progressBarr{
+				position: absolute;
+				width: 0px;
+				top: 1px;
+				left:1px;
+				height: 35px;
+				background-color:#ff2bed;
+			}
+			#progressBarrBg{
+				position: relative;
+			    width: 142px;
+			    height: 37px;
+			    background-color: rgba(255,255,255,.7);
+			}
+			#c2action{
+				position: absolute;
+			    top: 65px;
+    			left: 696px;
+			    width: 152px;
+			    height: 54px;
+			    z-index: 3;
+			    background-image: url(images/verVideoBtn.png);
+			    opacity: 0;
+			}
+			#verVideo{
+				position: absolute;
+				top: 25px;
+				left: 39px;
+			}
+
+			#releaseDate{
+				width: 333px;
+			    height: 18px;
+			    background-image: url(images/releaseDate.png);
+			    position: absolute;
+			    z-index: 2;
+			    left: 251px;
+    			top: 168px;
+			    opacity: 0;
+			}
+
+			#tagLine{
+				width: 248px;
+			    height: 12px;
+			    background-image: url(images/tagLine.png);
+			    position: absolute;
+			    z-index: 2;
+			    left: 294px;
+    			top: 137px;
+			    opacity: 0;
+			}
+
+			#cast{
+				width: 431px;
+			    height: 15px;
+			    background-image: url(images/cast.png);
+			    position: absolute;
+			    z-index: 2;
+			    left: 207px;
+    			top: 9px;
+			    opacity: 0;
+			}
+
+			#eone{
+				width:52px;
+				height:23px;
+				background-image: url(images/eone.png);
+				position:absolute;
+				z-index: 2;
+			    left: 745px;
+    			top: 153px;
+    			opacity: 0;
+			}
+
+			#tt{
+				width: 462px;
+			    height: 117px;
+			    background-image: url(images/tt.png);
+			    position: absolute;
+			    z-index: 2;
+			  	left: 187px;
+    			top: 21px;
+			    opacity: 0;
+			}
+		</style>
+	</head>
+	<body onload="init();">
+		<div id="container" class="container">
+			<div id="c2action" style="opacity: 1; transform: matrix(0.910293, 0, 0, 0.910293, 0, 0);"></div>
+			<div id="countDown">
+				<div id="desplegandoTxt">DESPLEGANDO EN</div>
+					<div id="progressBarrBg">
+					<div id="progressBarr"></div>
+				</div>
+				<div id="count">3</div>
+			</div>
+			<div id="tt" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+			<div id="tagLine" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+			<div id="releaseDate" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+			<div id="cast" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+			<div id="director" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+			<div id="eone" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+			<div id="overVideo"></div>
+			<div id="cTag" style="cursor: pointer; background-image: url(&quot;about:blank&quot;);"></div>
+
+		</div>
+		<script src="./html5API.js"></script>
+		<script src="./TweenMax.min.js"></script>
+		<script type="text/javascript">
+			var container = myFT.$("#container"),
+				cTag = myFT.$("#cTag"),
+				seconds=3;
+
+
+			myFT.applyClickTag(cTag,1);
+
+			function init(){
+				initAni();
+			}
+
+			function initAni(){
+				TweenLite.to(tt, 0, {y:0,alpha:1});
+				TweenLite.to(director, 0, {y:0,alpha:1});
+				TweenLite.to(releaseDate, 0, {y:0,alpha:1});
+				TweenLite.to(cast, 0, {y:0,alpha:1});
+				TweenLite.to(tagLine, 0, {y:0,alpha:1});
+				TweenLite.to(eone, 0, {y:0,alpha:1});
+
+				TweenLite.from(eone, 1, { y:200, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(director, 1, {delay:.9, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(tt, 1, {delay:.6, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(releaseDate, 1, {delay:1.2, y:100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(cast, 1, {delay:.3, y:-100, alpha:0, ease: Power4.easeOut});
+				TweenLite.from(tagLine, 1, { y:-100, alpha:0, ease: Power4.easeOut});
+				
+				TweenMax.to(c2action, 1, {alpha:1,ease: Power4.easeOut,delay:1.5, onComplete:scaleC2Action});
+			}
+		
+
+			function scaleC2Action(){
+				TweenLite.to(c2action, .5, {scaleX:1, scaleY:1, onComplete:restoreC2Action});
+			}
+
+			function restoreC2Action(){
+				TweenLite.to(c2action, .5, {scaleX:.85, scaleY:.85, onComplete:scaleC2Action});
+			}
+
+			function overVideoMouseOver(e){
+				TweenLite.to(c2action, .5, {alpha:0});
+				TweenLite.to(countDown, .5, {alpha:1});
+				TweenLite.to(progressBarr, 2.5, {width:140, onComplete:expand});
+				startCount();
+			}
+
+			function overVideoMouseOut(e){
+				TweenLite.to(c2action, .5, {alpha:1});
+				TweenLite.to(countDown, .5, {alpha:0});
+				TweenLite.to(progressBarr, 0, {width:0});
+				restoreCount();
+			}
+
+			function startCount(){
+				
+				countVar=setInterval(function(){
+					if(seconds > 0){
+						seconds=seconds-1;
+
+						document.getElementById("count").innerHTML=seconds;
+					}else{
+						clearInterval(countVar);
+					}
+				},833);
+			}
+
+			function restoreCount(){
+				seconds=3;
+				document.getElementById("count").innerHTML=seconds;
+				clearInterval(countVar);
+			}
+
+			function overVideoClick(){
+				//console.log("start");
+				myFT.tracker("videoExpanded");
+				myFT.send("start");
+				myFT.talk("wall");
+			}
+
+			function expand(){
+				//console.log("start");
+				myFT.tracker("videoExpanded");
+				myFT.send("start");
+				myFT.talk("wall");
+			}
+
+			myFT.$("#overVideo").on("mouseover",overVideoMouseOver);
+			myFT.$("#overVideo").on("mouseout",overVideoMouseOut);
+			myFT.$("#overVideo").on("click",overVideoClick);
+		</script>
+	
+
+		
+</body></html>

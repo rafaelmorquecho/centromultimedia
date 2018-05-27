@@ -68,7 +68,6 @@
         </section>
         <div id="peliculaDialog" style="display:none">
             <div id="peliculas-info" class="container-fluid">
-                <button type="submid">quitar</button>
             </div>	
         </div>
         <div id="loginDialog" style="display:none">

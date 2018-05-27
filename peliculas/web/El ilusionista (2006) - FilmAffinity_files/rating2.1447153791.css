@@ -1,0 +1,10 @@
+    .rate-movie-box{ position:relative; width: 160px; padding: 0px 10px; margin: 10px 0px; text-align: center;}
+    .review-img{ position:absolute; right: 16px; top: 5px;}
+    .sending-rating{ font-style:italic}
+    .rating-title{ color:#003366; font-size:12px; margin-bottom:10px;}
+    .rating-img{ margin: 8px 0px 0px 0px; height:20px;}
+    .share-rat-container{ display: none;}
+    .share-rat-container{ position:absolute; left: 15px; top: 5px; margin: 0px 0px 0px 2px; }
+    .share-rat-container a{ text-decoration: none;}
+    .share-rat-container a:link, .share-rat-container a:hover, .share-rat-container a:visited{ text-decoration: none;}
+    .rating-select{ font-size: 12px; font-weight: bold;}

@@ -1,0 +1,6 @@
+body {
+	overflow-x: hidden!important;
+}
+iframe {
+	display: inline!important;
+}

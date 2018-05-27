@@ -1,0 +1,118 @@
+.movie-card .mc-title a{ text-decoration: none; color: #333333; font-size: 16px; line-height: 18px;}
+.movie-card .mc-title a:hover{ text-decoration: underline;}
+.movie-card .mc-director{ height: 20px; line-height: 20px; overflow-y: hidden; padding-bottom: 2px;}
+.movie-card .mc-director a{ text-decoration: none; color: #326E9C; font-size: 14px; line-height: 20px}
+.movie-card .mc-director a:hover{ text-decoration: underline}
+.movie-card .mc-cast a{ text-decoration: none; color: #666666; font-size: 14px; line-height: 15px; white-space: nowrap;}
+.movie-card .mc-cast .nb{ display: inline-block;}
+.movie-card .mc-cast a:hover{ text-decoration: underline}
+.movie-card .mc-action{ background-color: #F5F5F5; border: 1px solid #DDDDDD; border-radius: 3px; cursor: pointer; text-align: center;}
+.movie-card .mc-action:hover{ background-color: #DDDDDD !important; color: #666666}
+.movie-card .mc-action a i{ color: #666666; font-size: 14px;}
+.movie-card .mc-action:hover a i{ color: #666666}
+
+
+.movie-card-0{ position:relative; }
+.movie-card-0 img{ vertical-align: text-bottom;}
+.movie-card-0 .mc-poster{ position: absolute}
+.movie-card-0 .mc-poster img{ box-shadow: 2px 3px 4px #BBBBBB}
+.movie-card-0 .mc-info-container{ margin-left: 130px; min-height: 150px}
+.movie-card-0 .mc-info-container > div{ margin-bottom: 7px; }
+.movie-card .mc-actions{ float: right;}
+.movie-card .mc-action{ display: inline-block; margin-left: 5px;}
+.movie-card .mc-action:hover{ background-color: #FFFFFF}
+
+
+.movie-card-1{ position:relative;}
+.movie-card-1 img{ vertical-align: text-bottom;}
+.movie-card-1 .mc-title{ margin-bottom: 5px;}
+.movie-card-1 .mc-poster{ display: inline-block; }
+.movie-card-1 .mc-poster img{ box-shadow: 2px 3px 4px #BBBBBB}
+.movie-card-1 .mc-info-container{ display: inline-block; width: 70%; margin-left: 20px; vertical-align: top; min-height: 145px;}
+.movie-card-1 .mc-info-container > div{ margin-bottom: 7px;}
+.movie-card-1 .mc-info-container .mc-cast{ overflow-y: hidden;}
+.movie-card-1 .mc-info-container .mc-cast a{ display: inline-block; margin-bottom: 3px;}
+.movie-card-1 .mr-rating{ position: relative; }
+.movie-card-1 .mr-rating .main-avbur{ position: absolute; top: 0px; left: 130px;}
+.movie-card-1 .mr-rating .main-avbur .avgrat-box-ur{ font-size: 16px; text-align: center; color: #FFFFFF; letter-spacing: -1px; width: 2em; height: 1.6em; line-height: 1.6em; margin: 0 auto; border-radius: .3em; box-sizing: border-box; font-weight: normal; display: inline-block; margin-right: 5px; border: 1px solid #900; background: #900; font-weight: bold;}
+.movie-card-1 .mr-rating .main-avbur small{ display: inline-block; color: #555;}
+.movie-card-1 .mr-rating .main-avbur a{ margin-left: 3px;}
+
+
+
+.movie-card-3 img{ vertical-align: text-bottom;}
+.movie-card-3 .mc-info-container > div{ padding:1px 0px;}
+
+.movie-card-7{ position:relative;}
+.movie-card-7 .mc-poster{ position: absolute}
+.movie-card-7 img{ vertical-align: text-bottom;}
+.movie-card-7 .mc-info-container{ margin-left: 75px; min-height: 95px}
+.movie-card-7 .mc-info-container > div{ padding:1px 0px;}
+
+.movie-card-13{ color: #666; margin: 0px; padding:0px; position: relative;}
+.movie-card-13 .mc-image img{ border: 1px solid #b0b0b0; height: 234px; width:155px; }
+.movie-card-13 .fringe{text-align: center; font-size: 85%; color:#ffffff; position: absolute; bottom:15px; left:1px; right:1px; height: 50px;  background: #447CAD; filter: Alpha(Opacity=90); -moz-opacity: .90; opacity: .90; padding: 4px 0px 4px 0px;}
+.movie-card-13 .mtitle{font-size: 123.1%; height:36px; margin-bottom: 2px; overflow-y: hidden;}
+.movie-card-13 a{text-decoration: none;}
+
+.movie-card-21{ position:relative;}
+.movie-card-21 h3{ height: 24px; overflow: hidden; text-overflow: ellipsis; color: #3c6e99; margin: 0 0 8px 0}
+.movie-card-21 h3 a{ font-weight:bold; font-size:18px; color:#3c6e99;}
+.movie-card-21 img{ vertical-align: baseline;}
+.movie-card-21 .mc-poster{ position: absolute; margin-top: 3px;}
+.movie-card-21 .mc-poster img{ border: 0; box-shadow: 0 1px 5px rgba(0,0,0,0.5);}
+.movie-card-21 .mc-info-container{ margin-left: 110px; min-height: 180px; margin-bottom: 20px;}
+.movie-card-21 .mc-info-container > div{ padding:1px 0px; margin-bottom: 3px;}
+.movie-card-21 .mc-year-country { font-size: 13px;color: #666666;}
+.movie-card-21 .mc-year-country img{ vertical-align: text-bottom;}
+.movie-card-21 .mc-director{ height: 20px; overflow: hidden; }
+.movie-card-21 .mc-cast a{ text-decoration: none; color: #666666; font-size: 14px; line-height: 17px;}
+.movie-card-21 .mc-cast{ height: 34px; overflow: hidden;}
+.movie-card-21 .mc-sinop{ margin-top: 6px; height: 58px; line-height: 14px !important; overflow-y: hidden; text-overflow: ellipsis;}
+.movie-card-21 .mc-sinop a{ color: #333333; font-style: italic; font-size: 12px; height: 58px; line-height: 14px !important; overflow-y: hidden; text-overflow: ellipsis;}
+
+.movie-card .mc-actions { float: right; }
+.movie-card-21 .mc-action{ background-color: #f5f5f5; border: 1px solid #dddddd; border-radius: 3px; cursor: pointer;}
+.movie-card-21 .mc-action:hover{ background-color:#ffffff; }
+.movie-card-21 .mc-action .addl{ color: #777777 !important; float: none; border: 0; vertical-align: middle;}
+.movie-card-21 .mc-action .addl i{ font-size: 14px; line-height: 14px;}
+
+.movie-card-ac{ clear: both; height: 60px; padding: 0px;}
+.movie-card-ac img {float:left; width: 40px; height: 60px}
+.movie-card-ac .title {margin-left: 46px; font-weight: bold; color: #666; line-height: 18px; font-size: 14px}
+.movie-card-ac .cast {margin-left: 46px; color: #888; font-style: italic; font-size: 12px; line-height: 15px;}
+
+.movie-card .mr-rating .avgrat-box{ font-size: 16px; background: #447CAD; text-align: center; color: #FFFFFF; letter-spacing: -1px; width: 2em; height: 1.6em; line-height: 1.6em; margin: 0 auto; border-radius: .3em; box-sizing: border-box; border: 1px solid #447CAD; font-weight: normal; display: inline-block; margin-right: 5px;}
+.movie-card .mr-rating .ratcount-box{ letter-spacing: -.5px; white-space: nowrap; font-size: 14px; text-align: center; color: #888888; padding: 1px 1px; display: inline-block;}
+
+.moviecard-section-container .hidden{ display: none;}
+
+
+
+.movie-card-22 .mc-left {float: left; width: 100px;}
+.movie-card-22 .mc-left + .mc-right {margin-left: 120px;}
+.movie-card-22 .mc-right .mc-actions {float: right; width: 270px;}
+.movie-card-22 .mc-right .mc-actions .badge {background: #BDD6EC; display: inline-block; padding: 0 5px; border-radius: 3px; line-height: 18px; position: absolute; right: 6px; top: 6px;}
+.movie-card-22 .mc-right .mc-actions .stats {float: right; text-align: center;}
+.movie-card-22 .mc-right .mc-actions .stats .avg-rating {width: 60px; height: 60px; line-height: 60px; font-size: 30px; padding: 0; border-radius: 10px; margin: auto auto 15px auto;}
+.movie-card-22 .mc-right .mc-actions .stats .rat-count {margin-bottom: 15px; font-size: 14px; color: #333;}
+.movie-card-22 .mc-right .mc-actions .stats .rat-count div {display: inline-block;}
+.movie-card-22 .mc-right .mc-actions .stats .rat-count i {color: inherit;}
+.movie-card-22 .mc-right .mc-actions .stats .rat-count.countcat {font-weight: bold; font-size: 18px;}
+.movie-card-22 .mc-right .mc-data {border-right: 1px solid #CCC; margin-right: 290px; padding-right: 20px;}
+.movie-card-22 .mc-right .mc-data .genre {display: inline-block; border-right: 1px solid #666; padding-right: 5px; font-weight: bold;}
+.movie-card-22 .mc-right .mc-data .synop {margin: 15px 0;}
+.movie-card-22 .mc-right .mc-data .synop .synop-text {color: #555;}
+.movie-card-22 .mc-right .mc-data .duration {margin-top: 15px;}
+.movie-card-22 .mc-right .mc-data .duration i {font-size: 16px; vertical-align: bottom;}
+.movie-card-22 .mc-action {width: 140px; height: 30px; line-height: 30px; background: #FFF; border-radius: 0; text-align: left; margin: 0 0 10px 0; padding: 0 10px; font-size: 14px; position: relative;}
+.movie-card-22 .mc-action:hover {background: #F5F5F5 !important;}
+.movie-card-22 .mc-action i {margin-right: 7px; font-size: 16px !important;}
+.movie-card-22 h3 {font-weight: normal; font-size: 18px; margin-top: 0;}
+.movie-card-22 .pos {font-weight: bold; text-align: center; font-size: 14px; margin-top: 15px; position: absolute;  top: -10px; left: 5px; background: #F5F5F5; width: 30px; height: 30px; line-height: 30px; border-radius: 15px; box-shadow: 1px 1px 2px #888}
+.movie-card-22 .director {font-weight: bold; margin: 5px 0;}
+.movie-card-22 .avg-rating-sm {width: 60px; height: 50px; line-height: 50px; font-size: 24px; padding: 0; border-radius: 10px; margin-bottom: 5px; background: #990000; color: #FFF; font-weight: bold;}
+.movie-card-22 .avg-rating-sm + .rat-count {color: #222 !important; margin-bottom: 10px !important;}
+.movie-card-22 .avg-rating-sm ~ .avg-rating {height: 50px !important; line-height: 50px !important; margin-bottom: 5px !important; font-size: 24px !important;}
+.movie-card-22 .duration {text-align: center; margin-top: 10px;}
+.movie-card-22 .duration i {font-size: 16px; vertical-align: bottom;}

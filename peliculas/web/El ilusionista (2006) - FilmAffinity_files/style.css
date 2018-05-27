@@ -1,0 +1,297 @@
+/* apply a natural box layout model to all elements */
+ *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3,
+h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
+address, big, cite, code, del, dfn, em, font, img, ins,
+kbd, q, s, samp, small, strike, strong, sub, sup, tt,
+var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0; /* elimina el bordel del foco del elemento */
+font-weight: inherit;
+font-style: inherit;
+font-size: 100%;
+font-family: inherit;
+vertical-align: baseline;
+}
+:focus { outline: 0;}
+a, a:link, a:visited, a:hover, a:active{text-decoration:none}
+table { border-collapse: separate;border-spacing: 0;}
+th, td {text-align: left; font-weight: normal;}
+img, iframe {border: none; text-decoration:none;}
+ol, ul {list-style: none;}
+input, textarea, select, button {font-size: 100%;font-family: inherit;}
+select {margin: inherit;}
+hr {margin: 0;padding: 0;border: 0;color: #000;background-color: #000;height: 1px}
+
+
+@font-face {
+    font-family: 'helveticaNeue';
+    src: url('../fonts/helveticaNeue-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica-Bold';
+    src: url('../fonts/Helvetica-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.exit{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+#container {
+    font-family: sans-serif;
+    font-size: 21px;
+    position: relative;
+    width:726px;
+    height:88px;
+    border: 1px solid #000;
+    overflow: hidden;
+    background-color: #9aa1aa;
+    cursor: pointer;
+    
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+
+#logo{
+    position: absolute;
+    bottom: 0px;
+    opacity: 0;
+    left: 12%;
+    margin-left: -73px;
+    transition:all 0.25s ease-out;
+    z-index: 9;
+}
+#fondo{
+    position: absolute;
+    opacity: 0;
+    transition:all 0.75s ease;
+}
+
+#t1, #t2{
+    width: 270px;
+    margin: 15px auto 0;
+    height: 60px;
+}
+#t1 .espacio, #t2 .espacio{
+    width: 10px;
+}
+#t2{
+    width: 320px;
+    padding-left: 20px;
+}
+
+#text1, #text2{
+    width: 230px;
+    height: 25px;
+    margin: 0px auto;
+    padding-left: 10px;
+}
+#text2{
+    width: 320px;
+    float: left;
+    margin-left: 26%;
+}
+
+
+#t1 p, #t2 p{
+    font-family: 'Helvetica-Bold';
+    color: black;
+    font-size: 23px;
+    position: relative;
+    float: left;
+    letter-spacing: -1px;
+    margin-top: 10px;
+    opacity: 0;
+}
+#text2 p{
+    float: right;
+}
+
+.espacio{
+    float: left;
+    width: 5px;
+    height: 5px;
+}
+
+#text1 p, #text2 p{
+    font-family: 'helveticaNeue';
+    color: black;
+    font-size: 17px;
+    position: relative;
+    margin-top: 10px;
+    opacity: 0;
+    float: left;
+    line-height: 1.5;
+}
+
+#t2, #text2{
+    display: none;
+}
+
+.bubble{
+    position: absolute;
+    transition: all .5s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+.coche1{
+    top: 20px;
+    right: 137px;
+    width: 10px;
+    opacity: 0; 
+    
+}
+.coche2{
+    top: 13px;
+    right: 155px;
+    width: 15px;
+    opacity: 0;
+}
+.coche3{
+    top: 3px;
+    width: 35px;
+    right: 177px;
+    opacity: 0;
+}
+
+#cierre{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgba(0,56,149,0.9);
+    display: none;
+}
+
+#cajaTexto{
+    width: 360px;
+    height: 70px;
+    border-radius: 15px;
+    margin: 8px auto;
+    margin-left: 180px;
+    border: white dashed 1px;
+    text-align: center;
+    display: inline-block;
+}
+
+#cajaTexto .t1{
+    font-family: 'helveticaNeue';
+    color: white;
+    font-size: 13px;
+    width: 60%;
+    margin-top: 15px;
+    margin-left: -5px;
+    line-height: 19px;
+    display: inline-block;
+}
+#cajaTexto .t2{
+    font-family: 'Helvetica-Bold';
+    color: white;
+    font-size: 12px;
+    letter-spacing: -0.5px;
+    font-weight: bold;
+    padding: 8px 5px 5px 9px;
+    width: 111px;
+    background: #053c97;
+    margin: 15px auto;
+    display: inline-block;
+    vertical-align: 8px;
+}
+
+#telefono{
+    font-family: 'Helvetica-Bold';
+    color: white;
+    font-size: 25px;
+    width: 24%;
+    margin-top: 0px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    vertical-align: 22px;
+}
+
+#boton{
+
+    width: 21%;
+    height: 27px;
+    margin: 25px auto;
+    border-radius: 8px;
+    position: absolute;
+    right: 15px;
+    top: 24px;
+
+    background: rgba(255,44,160,1);
+    background: -moz-linear-gradient(top, rgba(255,44,160,1) 0%, rgba(141,1,67,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,44,160,1)), color-stop(100%, rgba(141,1,67,1)));
+    background: -webkit-linear-gradient(top, rgba(255,44,160,1) 0%, rgba(141,1,67,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,44,160,1) 0%, rgba(141,1,67,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,44,160,1) 0%, rgba(141,1,67,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,44,160,1) 0%, rgba(141,1,67,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff2ca0', endColorstr='#8d0143', GradientType=0 );
+}
+#boton p{
+    font-family: 'Helvetica-Bold';
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    padding-top: 8px;
+    text-align: center;
+}
+
+
+/*LOADER*/
+
+#contLoading{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#loading{
+    background: url(../images/loading.png);
+    width: 54px;
+    height: 54px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -27px;
+    margin-top: -27px;
+    animation:         circular 15s infinite;
+    -webkit-animation: circular 15s infinite;
+}
+@keyframes circular {
+      0%   { 
+        transform: rotate(0deg);
+        }
+      50% { 
+        transform: rotate(360deg);
+        }
+    }
+@-webkit-keyframes circular {
+      0%   { 
+        -webkit-transform: rotate(0deg);
+        }
+      50% { 
+        -webkit-transform: rotate(360deg);
+        }
+    }

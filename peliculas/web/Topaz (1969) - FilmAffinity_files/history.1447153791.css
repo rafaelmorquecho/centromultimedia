@@ -1,0 +1,14 @@
+#history {text-align:left; margin: 10px 0 0 0; border-style: solid; border-width: 1px; border-color: #bbb; background: #fff; }
+#history .title {margin:2px; font-size: 8pt; color:#666; background: #f8f8f8; border-bottom: 1px solid #ddd}
+#history .itemstable {width:100%; margin:4px}
+#history .itemcell {vertical-align: top; margin:4px;}
+#history .viewmore {text-align: right; margin:2px; font-size: 8pt}
+.histmcard {text-align:left; font-size: 10px;}
+.histmcard .poster {float:left; padding:2px 4px;}
+.histmcard .mtitle {padding-bottom:2px; font-weight: bold; font-size: 11px;}
+.histmcard .mtitle a{ text-decoration: none; color: #333333;}
+.histmcard .mtitle a:hover{ text-decoration: underline;}
+.histmcard .year {}
+.histmcard .director {color:#666666; }
+.histmcard .ratings {}
+.histmcard .avgrat {color:#990000; font-size:14px; font-weight: bold;}

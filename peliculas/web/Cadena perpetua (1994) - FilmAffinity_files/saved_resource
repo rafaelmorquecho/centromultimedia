@@ -1,0 +1,19 @@
+
+var ftGUID_2027933="30820E2723585B";
+var ftConfID_2027933="3714589";
+var ftParams_2027933="ftx=&fty=&ftadz=&ftscw=&ft_custom=&ftOBA=1&ft_agentEnv=0&ft_referrer=http%3A%2F%2Fwww.filmaffinity.com%2Fes%2Ffilm161026.html&cachebuster=547143.0195807671";
+var ftKeyword_2027933="";
+var ftCustom_2027933="";
+var ftSection_2027933="";
+var ftSegment_2027933="jy8";
+var ftSegmentList_2027933=[{s:'jy8'}];
+var ftRuleMatch_2027933="0";
+var ftTimestamp_2027933="1470796791";
+var ftImp2027933 = {};
+ftImp2027933.privacy = "x";
+ftImp2027933.guidAge = "62";
+ftImp2027933.impID = "3144E2EC595929";
+
+
+document.write('<scr'+'ipt src="https://secure.flashtalking.com/xre/202/2027933/1506211/js/j-2027933-1506211.js" id="ftscript_m2027933" name="ftscript_m2027933"></scr'+'ipt>');
+                    

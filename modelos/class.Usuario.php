@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 
 /**
- * modelo sin título - class.Usuario.php
+ * modelo sin tÃ­tulo - class.Usuario.php
  *
  * $Id$
  *
- * This file is part of modelo sin título.
+ * This file is part of modelo sin tÃ­tulo.
  *
  * Automatically generated on 25.05.2018, 19:37:51 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
@@ -117,11 +117,7 @@ class Usuario
      * @author Rafael Luis Morquecho Elena, <rlmorquecho@ono.com>
      * @return void
      */
-    public function <<Getter and Setter>>()
-    {
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C76 begin
-        // section -87--2-46-102-25eb090a:16358816f31:-8000:0000000000000C76 end
-    }
+    
 
 } /* end of class Usuario */
 

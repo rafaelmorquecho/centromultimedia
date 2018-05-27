@@ -1,0 +1,12 @@
+#cboxPrevious{display: none !important; }
+#cboxNext{display: none !important;}
+
+
+#cboxPrevious2{position: absolute; width: 60px; height: 100%; display: block; opacity: 0; left: 0px; }
+#cboxPrevious2:hover{background-color: transparent; opacity: 1; filter: none;}
+
+#cboxNext2{position: absolute; width: 60px; height: 100%; display: block; opacity: 0; right: 0px;}
+#cboxNext2:hover{background-color: transparent; opacity: 1; filter: none;}
+
+#cboxLoadingOverlay{}
+#cboxLoadingGraphic{background:url(/images/loading-small-2.gif) no-repeat center center;}
