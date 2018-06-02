@@ -2,7 +2,7 @@
 
 
 //Llamada al modelo
-require_once("modelos/Class.Pelicula.php");
+require_once("modelos/class.Pelicula.php");
 
 
 $pelicula=new pelicula();

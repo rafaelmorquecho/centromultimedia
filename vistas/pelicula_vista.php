@@ -19,9 +19,9 @@
             <div class="login">
                 <nav>
                     <ul>
-                        <li><a href="#">Peliculas</a></li>
-                        <li><a href="#">Musica</a></li>
-                        <li><a href="#">Series</a></li>
+                        <li id="peliculas_menu"><a href="#">Peliculas</a></li>
+                        <li id="musica_menu"><a href="#">Musica</a></li>
+                        <li id="series_menu"><a href="#">Series</a></li>
                     </ul>
                 </nav>
                 <button class="btn btn-signin sesion derecha"><?php echo "Bienvenido  " . $_SESSION['usuario']; ?></button>
@@ -35,63 +35,73 @@
                 </select>
             </div>
         </header>
-        <section>
-            <div id="peliculas">
-                <?php if(!empty($faforitos)){?>
-                <div id="barra_favoritas">
-                </div>
-                <div id="favoritas">
-                </div>
-                <?php } ?>       
-                    
-                <?php if(!empty($favoritas)){
-                     echo "<h2>Favoritas</h2>";
-                    foreach ($favoritas as $favorita) {
-                        echo "<img class='cartel' id=" . $favorita['id_pelicula'] . " titulo = " . $favorita['titulo'] . " src= " . $favorita['cartel'] . " alt='Caratula' > ";
-                    } }
-                    ?>
-                    
-                   
-                
-                </div>
-                    <?php
+        <div id="contenedor">
+            <section id="peliculas" style="display:none" >
+                <seccion>
+                    <div>
+                        <?php if (!empty($faforitos)) { ?>
+                            <div id="barra_favoritas">
+                            </div>
+                            <div id="favoritas">
+                            </div>
+                        <?php } ?>       
 
+                        <?php
+                        if (!empty($favoritas)) {
+                            echo "<h2>Favoritas</h2>";
+                            foreach ($favoritas as $favorita) {
+                                echo "<img class='cartel' id=" . $favorita['id_pelicula'] . " titulo = " . $favorita['titulo'] . " src= " . $favorita['cartel'] . " alt='Caratula' > ";
+                            }
+                        }
+                        ?>
+
+
+
+                    </div>
+                    <?php
                     foreach ($carteles as $cartel) {
 
                         echo "<img class='cartel' id=" . $cartel['id_pelicula'] . " titulo = " . $cartel['titulo'] . " src= " . $cartel['cartel'] . " alt='Caratula' fav='añadir a favoritos'> ";
                     }
                     ?>
-                </div>
+                    </div>
+                    </div>
+                    <div id="musica"  style="display:none">
+
+                    </div >
+
+                    <div id="series"  style="display:none">
+
+                    </div >
+
+
+            </section>
+            <div id="peliculaDialog" style="display:none">
+                <div id="peliculas-info" class="container-fluid">
+                </div>	
             </div>
-            <div id="musica">
-            </div >
-        </section>
-        <div id="peliculaDialog" style="display:none">
-            <div id="peliculas-info" class="container-fluid">
-            </div>	
-        </div>
-        <div id="loginDialog" style="display:none">
-        <div id="gestion"> </div>
-        <div id="usuario">
-        <?php //echo "<pre><code>" . print_r($_SESSION,true) . "</code></pre>";
-        echo "<p>Login:" .  $_SESSION['usuario'] . "</p>";
-        echo "<p>Privilegios:";
-        foreach ($_SESSION['rol'] as $rol) {
-            echo " " .  $rol . " ";
-        }
-        echo "</p>";
-       
+            <div id="loginDialog" style="display:none">
+                <div id="gestion"> </div>
+                <div id="usuario">
+                    <?php
+                    //echo "<pre><code>" . print_r($_SESSION,true) . "</code></pre>";
+                    echo "<p>Login:" . $_SESSION['usuario'] . "</p>";
+                    echo "<p>Privilegios:";
+                    foreach ($_SESSION['rol'] as $rol) {
+                        echo " " . $rol . " ";
+                    }
+                    echo "</p>";
 
-        if (in_array('admin' , $_SESSION['rol'])){ 
-        echo "<button class='boton' style='margin-rigth:25px' id='gestionUsuarios'> Gestion de usuarios</button>";
-        echo "<button class='boton' id='gestionPeliculas'> Gestion de peliculas</button>";
-        }
-        ?>
 
-        </div>
-            </div>	
-        </div>
+                    if (in_array('admin', $_SESSION['rol'])) {
+                        echo "<button class='boton' style='margin-rigth:25px' id='gestionUsuarios'> Gestion de usuarios</button>";
+                        echo "<button class='boton' id='gestionPeliculas'> Gestion de peliculas</button>";
+                    }
+                    ?>
 
+                </div>
+                </section>
+            </div>
 
     </body>
 </html>

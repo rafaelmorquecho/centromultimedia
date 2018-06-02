@@ -1,9 +1,9 @@
 
 $(document).ready(function () {
-    
+
     var titulo;
-    var datos=[];
-    
+    var datos = [];
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 // ventana de logeo    
@@ -12,7 +12,7 @@ $(document).ready(function () {
         $("#loginDialog").dialog('open');
         $('#usuarios').remove();
         $('#usuario').show();
-        
+
     });
 
     $('#loginDialog').dialog({
@@ -34,13 +34,13 @@ $(document).ready(function () {
         ]
     });
 
-    
+
 
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////  
 
 // mostar titulo
-   
+
     $(".cartel").mouseover(function () {
 
         titulo = $(this).attr("titulo");
@@ -66,14 +66,14 @@ $(document).ready(function () {
                 datos = $.parseJSON(data);
 
                 //console.log(datos);
-                
+
                 $('#peliculas-info').append("<tbody id='cuerpo'>");
                 $('#tabla').css('visibility', 'visible');
                 $('#cuerpo').append("<img style='float:right' src= '" + datos.cartel + "'" + " alt='Caratula' ><h3>Sinopsis</h3><br><p>" + datos.sinopsis + "</p>")
                 $("#peliculaDialog").dialog("option", "title", datos.titulo);
                 $('#cuerpo').append("<h3>Actores</h3><p>");
                 $.each(datos['actores'], function (i, item) {
-                    $('#cuerpo').append( item + ", ");
+                    $('#cuerpo').append(item + ", ");
                     $("#peliculaDialog").dialog("option", "title", datos.titulo);
                 });
                 $('#cuerpo').append("</p>");
@@ -84,10 +84,10 @@ $(document).ready(function () {
                 return false;
             }
         });
-        
+
 
     });
-    
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 // añadir a favoritos
@@ -107,7 +107,7 @@ $(document).ready(function () {
             }, {
                 text: "Añadir a favoritos",
                 click: function () {
-                $('#favoritas').append("<img class='cartel' id=" + datos['titulo'].id_pelicula + " titulo = " + datos['titulo'].titulo + " src= " + datos['titulo'].cartel + " alt='Caratula' > ");
+                    $('#favoritas').append("<img class='cartel' id=" + datos['titulo'].id_pelicula + " titulo = " + datos['titulo'].titulo + " src= " + datos['titulo'].cartel + " alt='Caratula' > ");
                 }
 
             },
@@ -123,13 +123,13 @@ $(document).ready(function () {
         ]
     });
 
-    $('#gestionUsuarios').click(function mostrarUsuarios () {
-        
+    $('#gestionUsuarios').click(function mostrarUsuarios() {
+
         var dataSent = {
-            
+
         };
 
-    
+
         $.ajax({
             url: "ajax/usuarios.php",
             type: "POST",
@@ -138,21 +138,21 @@ $(document).ready(function () {
                 $('#usuarios').remove();
                 var usuario = $.parseJSON(data);
                 //console.log(usuario);
-                
-                    $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>logins</th><th>Email</th><th></th></tr></thead>\
+
+                $('#gestion').append("<table id='usuarios' class='table table-condensed'><thead><tr><th>Nombre</th><th>logins</th><th>Email</th><th></th></tr></thead>\
                 <tbody id='cuerpo_usuarios'><tbody></table>");
-                    //$('#usuarios').css('visibility', 'visible');
-                    $('#usuario').hide();
-                
-    
-                    $.each(usuario, function(i,item) {
-                        
+                //$('#usuarios').css('visibility', 'visible');
+                $('#usuario').hide();
+
+
+                $.each(usuario, function (i, item) {
+
                     $('#cuerpo_usuarios').append("<tr><td>" + item.nombre + "</td><td>" +
-                    item.login + "</td><td>" + item.email +
-                        "</td><td>" + item.tipo  +
-                        "</td><td><input type='button' class='borrar' data-id='" + item.id + "'  value='Borrar'></td><"+
-                        "</td><td><input type='button' class='editar' data-id='" + item.id + "'  value='Editar'></td></tr>");
-                    
+                            item.login + "</td><td>" + item.email +
+                            "</td><td>" + item.tipo +
+                            "</td><td><input type='button' class='borrar' data-id='" + item.id + "'  value='Borrar'></td><" +
+                            "</td><td><input type='button' class='editar' data-id='" + item.id + "'  value='Editar'></td></tr>");
+
                 });
 
                 $('#cuerpo_usuarios').append("<tr><td><input type='button' class='añadir' data-id=''  value='Añadir'></td></tr>");
@@ -165,17 +165,17 @@ $(document).ready(function () {
                 alert(errorThrown);
                 return false;
             }
-    });
+        });
 
-    function usuariosBorrar(){
-        var id_usuario = $(this).attr('data-id');
-            
-        var dataSent = {
-            id:id_usuario
-            
-        };
-    
-        
+        function usuariosBorrar() {
+            var id_usuario = $(this).attr('data-id');
+
+            var dataSent = {
+                id: id_usuario
+
+            };
+
+
             $.ajax({
                 url: "ajax/usuario_borrar.php",
                 type: "POST",
@@ -184,13 +184,13 @@ $(document).ready(function () {
                     $('#usuarios').remove();
                     var usuario_borrado = $.parseJSON(data);
                     alert(data)
-                    if(usuario_borrado > 0){
-                    alert("El Usuario con id " + id_usuario + "ha sido borrado" );
-                    //console.log(usuario_borrado);
-                    
+                    if (usuario_borrado > 0) {
+                        alert("El Usuario con id " + id_usuario + "ha sido borrado");
+                        //console.log(usuario_borrado);
+
 
                     }
-                    mostrarUsuarios ();
+                    mostrarUsuarios();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -199,107 +199,107 @@ $(document).ready(function () {
             });
 
         }
-        function usuariosEditar(){
+        function usuariosEditar() {
             var checkedUser;
             var checkedAdmin;
             var admin;
             var usuario;
             var id_usuario = $(this).attr('data-id');
             var dataSent = {
-                id:id_usuario
+                id: id_usuario
             };
-    
+
             $.ajax({
                 url: "ajax/usuarios_editar.php",
                 type: "POST",
                 data: dataSent,
                 success: function (data, textStatus, jqXHR) {
-                   
+
                     $('#usuarios').remove();
                     var usuario = $.parseJSON(data);
                     //console.log(usuario);
-                    $.each(usuario, function(i,item) {
-                        $.each(item.tipo, function(j,item2) {
-                            if(item2 === 'admin' ){
+                    $.each(usuario, function (i, item) {
+                        $.each(item.tipo, function (j, item2) {
+                            if (item2 === 'admin') {
                                 checkedAdmin = 'checked';
                             }
-                             
-                            if(item2 == 'usuario' ){
-                                checkedUser = 'checked'
-                             }          
-                 
-                         });  
-            
-            $('#gestion').append("<div><form id='usuarios'>\
-            <label for='id'>ID </label><input type='text' name='id' disabled value=" +"'"+ id_usuario +"'"+ "id='id_usuario' required >\
-            <br>\
-            <label for='nombre'>Nombre: </label><input type='text' name='nombre' value=" +"'"+ item.nombre +"'"+ "id='nombre' required >\
-            <br>\
-            <label for='email'>Email: </label><input type='text' name='email' value=" +"'"+ item.email +"'"+ " id='email' required >\
-            <br>\
-            <label for='login'>login: </label><input type='text' name='login'value=" +"'"+ item.login +"'"+ " id='login' required >\
-            <br>\
-            <label for='password'>Paswword: </label><input type='password' value=" +"'"+ item.password +"'"+ " name='password' id='password' required >\
-            <br>");
-            $('#usuarios').append("<input type='checkbox' "+ checkedAdmin + "  value ='si' name='admin' id='admin' data-id='1'>admin\
-            <br>");
-            $('#usuarios').append("<input type='checkbox'   "+ checkedUser + "  value ='si' name='usuario' id='usuario' data-id='2'>usuario\
-            <br>");
-            }); 
-            $('#usuarios').append("<input type='button' value='Enviar' id='btn-enviar'><input type='reset'>\
-            <form></div>");
-        },
 
-        error: function (jqXHR, textStatus, errorThrown) {
+                            if (item2 == 'usuario') {
+                                checkedUser = 'checked'
+                            }
+
+                        });
+
+                        $('#gestion').append("<div><form id='usuarios'>\
+            <label for='id'>ID </label><input type='text' name='id' disabled value=" + "'" + id_usuario + "'" + "id='id_usuario' required >\
+            <br>\
+            <label for='nombre'>Nombre: </label><input type='text' name='nombre' value=" + "'" + item.nombre + "'" + "id='nombre' required >\
+            <br>\
+            <label for='email'>Email: </label><input type='text' name='email' value=" + "'" + item.email + "'" + " id='email' required >\
+            <br>\
+            <label for='login'>login: </label><input type='text' name='login'value=" + "'" + item.login + "'" + " id='login' required >\
+            <br>\
+            <label for='password'>Paswword: </label><input type='password' value=" + "'" + item.password + "'" + " name='password' id='password' required >\
+            <br>");
+                        $('#usuarios').append("<input type='checkbox' " + checkedAdmin + "  value ='si' name='admin' id='admin' data-id='1'>admin\
+            <br>");
+                        $('#usuarios').append("<input type='checkbox'   " + checkedUser + "  value ='si' name='usuario' id='usuario' data-id='2'>usuario\
+            <br>");
+                    });
+                    $('#usuarios').append("<input type='button' value='Enviar' id='btn-enviar'><input type='reset'>\
+            <form></div>");
+                },
+
+                error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
                     return false;
                 }
             });
         }
 
-        $(document).on("click ", "#btn-enviar", function() {
-        
-            mostrarUsuarios ();
-            
+        $(document).on("click ", "#btn-enviar", function () {
+
+            mostrarUsuarios();
+
 
             var dataSent = {
-                
-                id:$('#id_usuario').val(),
-                nombre:$('#nombre').val(),
+
+                id: $('#id_usuario').val(),
+                nombre: $('#nombre').val(),
                 email: $('#email').val(),
                 login: $('#login').val(),
-                password:$('#password').val(),
-                admin:$('input:checkbox[name=admin]:checked').val(),
-                usuario:$('input:checkbox[name=usuario]:checked').val(),
-            
+                password: $('#password').val(),
+                admin: $('input:checkbox[name=admin]:checked').val(),
+                usuario: $('input:checkbox[name=usuario]:checked').val(),
+
             };
-    
-        
+
+
             $.ajax({
                 url: "ajax/update_usuario.php",
                 type: "POST",
                 data: dataSent,
                 success: function (data, textStatus, jqXHR) {
-                    
-                    /*var usuario_modificado = $.parseJSON(data);
-                    alert(usuario_modificado)
-                    if(usuario_modificado > 0){
-                    alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
-                    console.log(usuario_modificado);
 
-                    }*/
+                    /*var usuario_modificado = $.parseJSON(data);
+                     alert(usuario_modificado)
+                     if(usuario_modificado > 0){
+                     alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
+                     console.log(usuario_modificado);
+                     
+                     }*/
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
                     return false;
                 }
             });
-            
+
 
         });
 
 
-        function usuariosAñadir(){
+        function usuariosAñadir() {
             $('#usuarios').remove();
             $('#gestion').append("<div><form id='usuarios'>\
             <label for='nombre'>Nombre: </label><input type='text' name='nombre' id='nombre' required>\
@@ -310,7 +310,7 @@ $(document).ready(function () {
             <br>\
             <label for='password'>Paswword: </label><input type='password' name='password' id='password' required>\
             <br>");
-            
+
             $('#usuarios').append("<input type='checkbox'  value ='si' name='admin' id='admin' data-id='1'>admin\
             <br>");
             $('#usuarios').append("<input type='checkbox' value ='si' name='usuario' id='usuario' data-id='2'>usuario\
@@ -323,18 +323,18 @@ $(document).ready(function () {
     });
 
 
-    $(document).on("click ", "#btn-añadir", function() {
-        
+    $(document).on("click ", "#btn-añadir", function () {
+
         var dataSent = {
-            
-            id:$('#id_usuario').val(),
-            nombre:$('#nombre').val(),
+
+            id: $('#id_usuario').val(),
+            nombre: $('#nombre').val(),
             email: $('#email').val(),
             login: $('#login').val(),
-            password:$('#password').val(),
-            admin:$('input:checkbox[name=admin]:checked').val(),
-            usuario:$('input:checkbox[name=usuario]:checked').val(),
-        
+            password: $('#password').val(),
+            admin: $('input:checkbox[name=admin]:checked').val(),
+            usuario: $('input:checkbox[name=usuario]:checked').val(),
+
         };
 
         $.ajax({
@@ -344,12 +344,12 @@ $(document).ready(function () {
             success: function (data, textStatus, jqXHR) {
 
                 /*var usuario_modificado = $.parseJSON(data);
-                alert(usuario_modificado)
-                if(usuario_modificado > 0){
-                alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
-                console.log(usuario_modificado);
-
-                }*/
+                 alert(usuario_modificado)
+                 if(usuario_modificado > 0){
+                 alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
+                 console.log(usuario_modificado);
+                 
+                 }*/
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
@@ -357,6 +357,37 @@ $(document).ready(function () {
             }
         });
     });
+
+
+    $("#peliculas_menu").click(function () {
+        $('#musica').hide();
+        $('#series').hide();
+        $('#peliculas').show();
+        
+
+
+    });
+
+    $("#musica_menu").click(function () {
+        //$('#contenedor section').remove();
+        $('#musica').show();
+        $('#series').hide();
+        $('#peliculas').hide();
+
+
+    });
+
+    $("#series_menu").click(function () {
+        //$('#contenedor section').remove();
+        $('#musica').hide();
+        $('#series').show();
+        $('#peliculas').hide();
+    });
+
+
+
+
+
 });//fin
 
 

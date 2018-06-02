@@ -45,14 +45,15 @@ class usuario{
     }
     
     public function get_login2($login, $password){
-        $consulta=$this->db->query("SELECT * FROM `usuario`WHERE `login` ='" . $login . "' and  password = " .$password .   ";");
+        $consulta=$this->db->query("SELECT * FROM `usuario`WHERE `login` ='" . $login . "' and  password = '" .$password .   "';");
         $consulta->execute();
         $this->login = $consulta->rowCount(); 
         return $this->login;
     }
 
     public function get_login($login, $password){
-        $consulta=$this->db->query("SELECT DISTINCT * FROM `usuario` INNER join `usuario_clase` on (id = id_usuario) INNER join clase USING (id_clase) WHERE `login` ='" . $login . "' and `password` = " .$password .   ";");
+        //echo "consulta: " . ("SELECT  * FROM `usuario` INNER join `usuario_clase` on (id = id_usuario) INNER join clase USING (id_clase) WHERE `login` ='" . $login . "' and `password` = '" .$password .   "';");
+        $consulta=$this->db->query("SELECT  * FROM `usuario` INNER join `usuario_clase` on (id = id_usuario) INNER join clase USING (id_clase) WHERE `login` ='" . $login . "' and `password` = '" .$password .   "';");
         $consulta->execute();
         $this->login = $consulta->fetchAll();
         return $this->login;

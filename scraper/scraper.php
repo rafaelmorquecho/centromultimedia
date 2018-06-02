@@ -53,14 +53,14 @@ function carteles($cartel) {
     $imagen = str_replace(' ', '_', $imagen[0]);
 
 
-    
+
     $url = "../carteles/" . $imagen . "." . "jpg";
     $url2= "carteles/" . $imagen . "." . "jpg";
 
     if (copy($fichero, $url)) {
-        echo "<p>El fichero $fichero se esta copiando en $url2</p>";
+        echo "<p>El fichero $fichero se esta copiando en $url</p>";
     } else {
-        echo "<p>Se ha producido un error al intentar copiar el fichero $fichero en $url2</p>";
+        echo "<p>Se ha producido un error al intentar copiar el fichero $fichero en $url</p>";
     }
     return $url2;
 }
