@@ -123,6 +123,30 @@ $(document).ready(function () {
         ]
     });
 
+    
+    $('#gestionPeliculas').click(function(){
+        var dataSent = {
+
+        };
+
+
+        $.ajax({
+            url: "scraper/scraper.php",
+            type: "POST",
+            data: dataSent,
+            success: function (data, textStatus, jqXHR) {
+                var datos =  $.parseJSON(data);
+                console.log(datos);//var peliculas = $.parseJSON(data);
+                //console.log(usuario);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+                return false;
+            }
+        });
+
+    });
+    
     $('#gestionUsuarios').click(function mostrarUsuarios() {
 
         var dataSent = {
@@ -150,15 +174,15 @@ $(document).ready(function () {
                     $('#cuerpo_usuarios').append("<tr><td>" + item.nombre + "</td><td>" +
                             item.login + "</td><td>" + item.email +
                             "</td><td>" + item.tipo +
-                            "</td><td><input type='button' class='borrar' data-id='" + item.id + "'  value='Borrar'></td><" +
-                            "</td><td><input type='button' class='editar' data-id='" + item.id + "'  value='Editar'></td></tr>");
+                            "</td><td><input type='button' id='borrar' data-id='" + item.id + "'  value='Borrar'></td><" +
+                            "</td><td><input type='button' id='editar' data-id='" + item.id + "'  value='Editar'></td></tr>");
 
                 });
 
-                $('#cuerpo_usuarios').append("<tr><td><input type='button' class='añadir' data-id=''  value='Añadir'></td></tr>");
-                $('.borrar').on('click', usuariosBorrar);
-                $('.editar').on('click', usuariosEditar);
-                $('.añadir').on('click', usuariosAñadir);
+                $('#cuerpo_usuarios').append("<tr><td><input type='button' id='añadir' data-id=''  value='Añadir'></td></tr>");
+                $('#borrar').on('click', usuariosBorrar);
+                $('#editar').on('click', usuariosEditar);
+                $('#añadir').on('click', usuariosAñadir);
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -183,14 +207,14 @@ $(document).ready(function () {
                 success: function (data, textStatus, jqXHR) {
                     $('#usuarios').remove();
                     var usuario_borrado = $.parseJSON(data);
-                    alert(data)
+                    console.log();
                     if (usuario_borrado > 0) {
                         alert("El Usuario con id " + id_usuario + "ha sido borrado");
                         //console.log(usuario_borrado);
 
 
                     }
-                    mostrarUsuarios();
+                    //mostrarUsuarios();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -199,6 +223,11 @@ $(document).ready(function () {
             });
 
         }
+
+        $('#usuarios').on('submit', function (e) {
+            e.preventDefault();
+        });
+        
         function usuariosEditar() {
             var checkedUser;
             var checkedAdmin;
@@ -246,7 +275,7 @@ $(document).ready(function () {
                         $('#usuarios').append("<input type='checkbox'   " + checkedUser + "  value ='si' name='usuario' id='usuario' data-id='2'>usuario\
             <br>");
                     });
-                    $('#usuarios').append("<input type='button' value='Enviar' id='btn-enviar'><input type='reset'>\
+                    $('#usuarios').append("<input type='button'  value='cambiar' id='btn-cambiar'><input type='reset'>\
             <form></div>");
                 },
 
@@ -257,14 +286,14 @@ $(document).ready(function () {
             });
         }
 
-        $(document).on("click ", "#btn-enviar", function () {
+        $(document).on("click ", "#btn-cambiar", function () {
 
-            mostrarUsuarios();
+            id=$('#id_usuario').val();
 
 
             var dataSent = {
 
-                id: $('#id_usuario').val(),
+                id: id,
                 nombre: $('#nombre').val(),
                 email: $('#email').val(),
                 login: $('#login').val(),
@@ -281,13 +310,13 @@ $(document).ready(function () {
                 data: dataSent,
                 success: function (data, textStatus, jqXHR) {
 
-                    /*var usuario_modificado = $.parseJSON(data);
-                     alert(usuario_modificado)
+                    var usuario_modificado = data
                      if(usuario_modificado > 0){
-                     alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
                      console.log(usuario_modificado);
-                     
-                     }*/
+                     }else{
+                        alert("Error al modificar usuario" );
+                     }
+                     //mostrarUsuarios();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -295,10 +324,15 @@ $(document).ready(function () {
                 }
             });
 
-
+           
         });
+        $("#usuarios").submit(function(e){
+            e.preventDefault();
+          });
 
-
+          $(document).on("submit", "#usuarios", function (e) {
+            e.preventDefault();
+          });
         function usuariosAñadir() {
             $('#usuarios').remove();
             $('#gestion').append("<div><form id='usuarios'>\
@@ -316,18 +350,19 @@ $(document).ready(function () {
             $('#usuarios').append("<input type='checkbox' value ='si' name='usuario' id='usuario' data-id='2'>usuario\
             <br>");
 
-            $('#usuarios').append("<input type='button' id='btn-añadir' value='Enviar'><input type='reset'>\
+            $('#usuarios').append("<input type='button'  id='btn-añadir' value='Enviar'><input type='reset'>\
             <form></div>");
 
         }
     });
 
 
-    $(document).on("click ", "#btn-añadir", function () {
 
+    $(document).on("click ", "#btn-añadir", function () {
+        
         var dataSent = {
 
-            id: $('#id_usuario').val(),
+            
             nombre: $('#nombre').val(),
             email: $('#email').val(),
             login: $('#login').val(),
@@ -343,19 +378,25 @@ $(document).ready(function () {
             data: dataSent,
             success: function (data, textStatus, jqXHR) {
 
-                /*var usuario_modificado = $.parseJSON(data);
-                 alert(usuario_modificado)
-                 if(usuario_modificado > 0){
-                 alert("El Usuario con id " + id_usuario + "ha sidomodificado" );
-                 console.log(usuario_modificado);
+                var usuario_insertado = data;
+
+                 if(usuario_insertado > 0){
+                 alert("un nuevo usuario" );
+                 console.log(usuario_insertado);
                  
-                 }*/
+                 }
+                 else{
+                    alert("Error al añadir  dos usuario" );
+                 }
+                 //mostrarUsuarios();
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
                 return false;
             }
         });
+       
+        
     });
 
 

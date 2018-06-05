@@ -4,9 +4,6 @@
         <meta charset="UTF-8" />
         <title>Peliculas</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
-                integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="
-        crossorigin="anonymous"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -19,20 +16,44 @@
             <div class="login">
                 <nav>
                     <ul>
-                        <li id="peliculas_menu"><a href="#">Peliculas</a></li>
+                        <!--<li id="peliculas_menu"><a href="#">Peliculas</a></li>
                         <li id="musica_menu"><a href="#">Musica</a></li>
-                        <li id="series_menu"><a href="#">Series</a></li>
+                        <li id="series_menu"><a href="#">Series</a></li>-->
                     </ul>
                 </nav>
-                <button class="btn btn-signin sesion derecha"><?php echo "Bienvenido  " . $_SESSION['usuario']; ?></button>
-                <button class="btn btn-signin derecha" id="logout" type="submit"  onclick= "window.location.href = 'vistas/logout.php'">Logout</button>
-                <input class="buscar select derecha" type="text">
-                <select class="select derecha" >
-                    <option>En todo</option>
-                    <option value="Titulos">En Titulos</option>
-                    <option value="Actores">En Actores</option>
-                    <option value="Directores">En Directores</option>
-                </select>
+
+                <ul id="main-nav">
+
+                    <li id="peliculas_menu"><a href="#">Peliculas</a>
+                        <ul>
+                            <li><a href="#">Actores</a></li>
+                            <li><a href="#">Directores</a></li>
+                            <li><a href="#">Genero</a></li>
+                        </ul>
+                    </li>
+                    <li id="musica_menu"><a href="#">Musica</a>
+                        <ul>
+                            <li><a href="#">Artista</a></li>
+                            <li><a href="#">Genero</a></li>
+                            <li><a href="#">Disco</a></li>
+                        </ul>
+                    </li>
+                    <li id="series_menu"><a href="#">Series tv</a>
+                        <ul>
+                            <li><a href="#">Temporada</a></li>
+                            <li><a href="#">Genero</a></li>
+                        </ul>
+                    </li>
+                    
+                    <button class="btn sesion derecha"><?php echo "Bienvenido  " . $_SESSION['usuario']; ?></button>
+                    <button class="btn derecha" id="logout" type="submit"  onclick= "window.location.href = 'vistas/logout.php'">Logout</button>
+                    <input class="buscar select derecha" type="text">
+                    <select class="select derecha" >
+                        <option>En todo</option>
+                        <option value="Titulos">En Titulos</option>
+                        <option value="Actores">En Actores</option>
+                        <option value="Directores">En Directores</option>
+                    </select>
             </div>
         </header>
         <div id="contenedor">

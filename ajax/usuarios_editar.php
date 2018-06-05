@@ -1,4 +1,5 @@
 <?php
+
 require("../conexion/conexion.php");
 require_once("../modelos/modelo_login.php");
 $id = $_POST['id'];

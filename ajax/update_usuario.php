@@ -13,8 +13,8 @@ $password = $_POST["password"];
 if (isset($_POST["usuario"])) $usuario = $_POST["usuario"]; else $usuario = 'no';
 if (isset($_POST["admin"])) $admin = $_POST["admin"]; else $admin = 'no';
 
-$usuario1->update_usuario($id,$nombre,$email,$login,$password,$admin,$usuario);
+$datos = $usuario1->update_usuario($id,$nombre,$email,$login,$password,$admin,$usuario);
 
-echo json_encode($nombre . $email . $login . $password . $admin . $usuario.  $id);
+echo json_encode($datos);
 ?>
 

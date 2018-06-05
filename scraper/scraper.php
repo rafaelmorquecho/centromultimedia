@@ -4,6 +4,7 @@ require_once('conectar.php');
 
 //require_one('04_conex_peliculas.php');
 $peliculas = array();
+$datos = array();
 
 function optener($nombrefichero) {
     $html = file_get_contents($nombrefichero); //Convierte la información de la URL en cadena
@@ -58,9 +59,9 @@ function carteles($cartel) {
     $url2= "carteles/" . $imagen . "." . "jpg";
 
     if (copy($fichero, $url)) {
-        echo "<p>El fichero $fichero se esta copiando en $url</p>";
+        $datos[] = "<p>El fichero $fichero se esta copiando en $url</p>";
     } else {
-        echo "<p>Se ha producido un error al intentar copiar el fichero $fichero en $url</p>";
+        $datos[] = "<p>Se ha producido un error al intentar copiar el fichero $fichero en $url</p>";
     }
     return $url2;
 }
@@ -127,19 +128,20 @@ function premioIndividuales($subcadena) {
   if ($print)
   return print_r($array, true);
   else
-  echo '<pre>' . print_r($array, true) . '</pre>';
+  $datos[] = '<pre>' . print_r($array, true) . '</pre>';
   } */
 
 function insertar($nombrefichero) {
     $conexion = conectar();
+    $datos = array();
 
 
 
-    echo "leeyendo: " . $nombrefichero;
+    $datos[] = "leeyendo: " . $nombrefichero;
     $html = optener($nombrefichero);
     $titulo = titulo($html);
     $titulo = '"' . $titulo[0] . '"';
-    echo "<p>" . $titulo . "</p>";
+    $datos[] = "<p>" . $titulo . "</p>";
 
     $infopeli = infopelis($html);
 
@@ -173,45 +175,50 @@ function insertar($nombrefichero) {
 
     $id2 = "";
     $consulta = ("SELECT * FROM `pelicula` WHERE `titulo`  LIKE ('" . $peliculas['titulo'] . "') and `año` = '" . $peliculas['año'] . "';");
-    echo $consulta;
+    $datos[] = $consulta;
     $repetida = mysqli_query($conexion, $consulta);
 
     if (mysqli_num_rows($repetida) > 0) {
-        echo "Esta pelicula ya se encuentra en la tabla";
+        $datos1[] = "Esta pelicula ya se encuentra en la tabla" . $peliculas['titulo'];;
     } else {
+        $datos1[] = "Añadiendo " . $peliculas['titulo'];
         $sql = "INSERT INTO `pelicula`(`titulo`, `año`, `sinopsis`, `duracion`, `cartel`) VALUES (" . "'" . $peliculas['titulo'] . "'," . "'" . $peliculas['año'] . "'," . "'" . $peliculas['sinopsis'] . "'," . "'" . $peliculas['duracion'] . "'," . "'" . $peliculas['cartel'] . "');";
-        echo $sql;
+        $datos[] = $sql;
         $resultado = mysqli_query($conexion, $sql);
         $id1 = mysqli_insert_id($conexion);
 
         foreach ($peliculas['reparto'] as $actor) {
 
             $consulta = "select `id_artista` from artista where nombre = '$actor'";
-            echo $consulta;
+            $datos[] = $consulta;
 
             $resultado = mysqli_query($conexion, $consulta);
             if (mysqli_num_rows($resultado) > 0) {
 
                 while ($fila = mysqli_fetch_row($resultado)) {
                     $id2 = $fila[0];
-                    echo "<p>Este Artista ya se encuentra en la tabla  $actor</p>";
+                    $datos[] = "<p>Este Artista ya se encuentra en la tabla  $actor</p>";
                 }
             } else {
-                echo "<p>Añadiendo Actor: $actor</p>";
+                $datos[] = "<p>Añadiendo Actor: $actor</p>";
                 $sql = "INSERT INTO artista VALUES ('','$actor');";
                 mysqli_query($conexion, $sql);
-                echo $sql;
+                $datos[] = $sql;
                 $id2 = mysqli_insert_id($conexion);
             }
 
             $consulta = "SELECT `id_artista` FROM `pelicula_artista_rol` WHERE `id_rol` = 1  and  `id_pelicula`= $id1 and `id_artista` =  $id2;";
-            echo $consulta;
+            $datos[] = $consulta;
             $sql = "INSERT INTO pelicula_artista_rol VALUES ( $id2 , 1 ,$id1);";
             mysqli_query($conexion, $sql);
-            echo $sql;
+            $datos[] = $sql;
         }
     }
-    echo '<pre>' . print_r($peliculas, true) . '</pre>';
+    //$datos[] = '<pre>' . print_r($peliculas, true) . '</pre>';
+
+    
+
+
 
     return $peliculas;
 }
@@ -220,6 +227,9 @@ function insertar($nombrefichero) {
 
 
 foreach (glob("../peliculas/web/*.html") as $nombrefichero) {
-    insertar($nombrefichero);
+    $peliculas[] = insertar($nombrefichero);
 }
+
+echo json_encode ($peliculas);
+
 ?>

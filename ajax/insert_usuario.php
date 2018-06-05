@@ -13,6 +13,6 @@ $password = $_POST["password"];
 if (isset($_POST["usuario"])) $usuario = $_POST["usuario"]; else $usuario = 'no';
 if (isset($_POST["admin"])) $admin = $_POST["admin"]; else $admin = 'no';
 
-$usuario1->insertar_usuario($nombre,$email,$login,$password,$admin,$usuario);
+$dato = $usuario1->insertar_usuario($nombre,$email,$login,$password,$admin,$usuario);
 
-echo json_encode ($nombre . $email . $login . $password . $admin . $usuario);
+echo json_encode ($dato);

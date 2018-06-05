@@ -3,16 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/modelos/class.Pelicula.php</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/datos-centromultimedia.sql</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/conexion/conexion.php</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/js/pelicula_vista.js</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/peliculas/web/Gran%20Torino%20(2008)%20-%20FilmAffinity_files/film.1463665323.css</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/pelicula_vista.php</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/login_vista.php</file>
             <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/index.php</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/centromultimedia.sql</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/scraper/conectar.php</file>
-            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/musica_vista.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/scraper/scraper.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/ajax/usuarios_editar.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/js/pelicula_vista.js</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/ajax/plantilla_peliculas.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/ajax/sesion.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/ajax/usuarios.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/controladores/controlador_pelicula.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/controladores/controlador_login.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/scraper/scraper_1.php</file>
+            <file>file:/C:/Users/rafa/Documents/NetBeansProjects/centromultimedia/vistas/css/pelicula_vista.css</file>
         </group>
     </open-files>
 </project-private>

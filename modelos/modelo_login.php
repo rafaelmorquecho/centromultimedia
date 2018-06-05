@@ -84,6 +84,10 @@ class usuario{
         if ($usuario =='si') {
             $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,1);"); 
         }
+
+        return $update->rowCount();
+
+
     }
 
     public function insertar_usuario($nombre,$email,$login,$password,$admin,$usuario){
@@ -101,7 +105,8 @@ class usuario{
             $update =$this->db->query("INSERT INTO `usuario_clase`(`id_usuario`, `id_clase`) VALUES ($id,1);"); 
         }
 
-    print_r($id);
+        return $insertar->rowCount();
+    
     }
         
         
